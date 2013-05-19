@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Game Rating Calculator</string>
+    <string name="threePlayer">Three Players</string>
+    <string name="three">3</string>
+    <string name="threePlayers">3 Players</string>
+    <string name="numPlayers">Number of Players: 2</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="one">1</string>
+    <string name="ProvisionalPlayers">Provisional Players</string>
+    <string name="Provisional">Provisional?</string>
+    <string name="two">2</string>
+    <string name="player1">Player 1</string>
+    <string name="newRating">New Rating:</string>
+    <string name="player2">Player 2</string>
+    <string name="player3">Player 3</string>
+    <string name="player4">Player 4</string>
+    <string name="player5">Player 5</string>
+    <string name="player6">Player 6</string>
+    <string name="calculate">Calculate</string>
+    <string name="appName">Rating Calculator</string>
+    <string name="winningPlayer">Winning Player</string>
+
+</resources>
