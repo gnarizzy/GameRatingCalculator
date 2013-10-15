@@ -10,14 +10,13 @@
    
     <supports-screens android:largeScreens="false"/>
     <application
+        android:allowBackup="true"
         android:theme="@style/appTheme"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/appName"
-        android:allowBackup="true" >
+        android:label="@string/appName" >
         <activity
-            android:name=".GameRatingCalculatorActivity"
-            android:label="@string/appName" 
-            android:windowSoftInputMode="stateAlwaysHidden">n
+            android:name="com.Centaurii.app.RatingCalculator.GameRatingCalculatorActivity"
+            android:label="@string/appName" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

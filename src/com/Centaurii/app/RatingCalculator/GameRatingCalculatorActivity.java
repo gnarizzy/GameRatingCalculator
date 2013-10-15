@@ -1,6 +1,7 @@
 package com.Centaurii.app.RatingCalculator;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 
 /**
@@ -18,5 +19,11 @@ public class GameRatingCalculatorActivity extends FragmentActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+    }
+    
+    public boolean checkExternalStorage()
+    {
+        String state = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED.equals(state);
     }
 }
