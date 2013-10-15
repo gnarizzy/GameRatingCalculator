@@ -2,7 +2,7 @@
 <resources>
     <style parent="android:Theme.Holo.Light" name="appTheme">
         <item name="android:colorBackground">#ffffff</item>
-        
+        <item name="android:windowNoTitle">true</item>
     </style>
     
 </resources>
