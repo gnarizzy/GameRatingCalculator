@@ -5,4 +5,8 @@
         <item name="android:windowNoTitle">true</item>
     </style>
     
+    <style parent="android:Theme.Holo.Light" name="splashTheme"> 
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    
 </resources>
