@@ -6,4 +6,5 @@ public class Tags
 {
     /** Storage Location*/
     public static final String RATINGS_FOLDER = Environment.getExternalStorageDirectory() + "/RatingsFolder/";
+    public static final String RATINGS_FILE = "profiles";
 }
