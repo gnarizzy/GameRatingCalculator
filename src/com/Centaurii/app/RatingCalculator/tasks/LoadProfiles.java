@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import com.Centaurii.app.RatingCalculator.GameRatingCalculatorActivity;
 import com.Centaurii.app.RatingCalculator.R;
+import com.Centaurii.app.RatingCalculator.implementations.ProfileHandler;
+import com.Centaurii.app.RatingCalculator.interfaces.ProfileRetrieveAndSave;
 import com.Centaurii.app.RatingCalculator.util.Tags;
 
 import android.app.Dialog;
@@ -38,80 +40,11 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
         //Check to make sure there is external storage available
         if(activity.checkExternalStorage())
         {
-            File ratingsFolder = new File(Tags.RATINGS_FOLDER);
-            File ratingsFile = new File(Tags.RATINGS_FOLDER, Tags.RATINGS_FILE);
+            String rawProfile = getFile();
+            Log.i("LoadProfiles", "Contents of file:\n" + rawProfile);
             
-            Log.i("LoadProfiles", "Folder: " + ratingsFolder.getAbsolutePath());
-            Log.i("LoadProfiles", "File: " + ratingsFile.getAbsolutePath());
-            
-            //Check to see if the ratings folder already exists
-            if(ratingsFolder.exists())
-            {
-                BufferedReader reader = null;
-                try
-                {
-                    if(ratingsFile.exists())
-                    {
-                        Log.i("LoadProfiles", "Reading ratings info");
-                        reader = new BufferedReader(new FileReader(ratingsFile));
-                        
-                        StringBuilder builder = new StringBuilder();
-                        String line;
-                        while((line = reader.readLine()) != null)
-                        {
-                            builder.append(line + "\n");
-                            if(isCancelled())
-                            {
-                                break;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Log.i("LoadProfiles", "Creating ratings file");
-                        ratingsFile.createNewFile();
-                    }
-                }
-                catch (IOException e)
-                {
-                    Log.i("LoadProfiles", "I/O: File could not be created or something else");
-                    e.printStackTrace();
-                }
-                catch (Exception e)
-                {
-                    Log.i("LoadProfiles", "Unknown error, check stack trace");
-                    e.printStackTrace();
-                }
-                finally
-                {
-                    try
-                    {
-                        if(reader != null)
-                        {
-                            reader.close();
-                        }
-                    } 
-                    catch (IOException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            //If it doesn't exist, create it and set isFirstTime
-            else
-            {
-                try
-                {
-                    ratingsFolder.mkdir();
-                    ratingsFile.createNewFile();
-                } 
-                catch (IOException e)
-                {
-                    Log.i("LoadProfiles", "File Creation Failed");
-                    e.printStackTrace();
-                }
-                activity.setFirstTime(true);
-            }
+            ProfileRetrieveAndSave prof = new ProfileHandler();
+            activity.setSavedProfiles(prof.getProfiles(rawProfile));
         }
         //External Storage is not available  
         else
@@ -119,8 +52,6 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
             //Inform user that profile information cannot be used
             Log.i("LoadProfiles", "No external storage");
         }
-        
-        
         
         
         try
@@ -150,5 +81,88 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
         {
             splashScreen.dismiss();
         }
+    }
+    
+    private String getFile()
+    {
+        File ratingsFolder = new File(Tags.RATINGS_FOLDER);
+        File ratingsFile = new File(Tags.RATINGS_FOLDER, Tags.RATINGS_FILE);
+        
+        Log.i("LoadProfiles", "Folder: " + ratingsFolder.getAbsolutePath());
+        Log.i("LoadProfiles", "File: " + ratingsFile.getAbsolutePath());
+        
+        String rawProfile = "";
+        
+        //Check to see if the ratings folder already exists
+        if(ratingsFolder.exists())
+        {
+            BufferedReader reader = null;
+            try
+            {
+                if(ratingsFile.exists())
+                {
+                    Log.i("LoadProfiles", "Reading ratings info");
+                    reader = new BufferedReader(new FileReader(ratingsFile));
+                    
+                    StringBuilder builder = new StringBuilder();
+                    String line;
+                    while((line = reader.readLine()) != null)
+                    {
+                        builder.append(line + "\n");
+                        if(isCancelled())
+                        {
+                            break;
+                        }
+                    }
+                    
+                    rawProfile = builder.toString();
+                }
+                else
+                {
+                    Log.i("LoadProfiles", "Creating ratings file");
+                    ratingsFile.createNewFile();
+                }
+            }
+            catch (IOException e)
+            {
+                Log.i("LoadProfiles", "I/O: File could not be created or something else");
+                e.printStackTrace();
+            }
+            catch (Exception e)
+            {
+                Log.i("LoadProfiles", "Unknown error, check stack trace");
+                e.printStackTrace();
+            }
+            finally
+            {
+                try
+                {
+                    if(reader != null)
+                    {
+                        reader.close();
+                    }
+                } 
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
+        //If it doesn't exist, create it and set isFirstTime
+        else
+        {
+            try
+            {
+                ratingsFolder.mkdir();
+                ratingsFile.createNewFile();
+            } 
+            catch (IOException e)
+            {
+                Log.i("LoadProfiles", "File Creation Failed");
+                e.printStackTrace();
+            }
+            activity.setFirstTime(true);
+        }
+        return rawProfile;
     }
 }

@@ -8,5 +8,10 @@
     <string name="settings">Settings</string>
     <string name="image_description">Splash Screen</string>
     <string name="add_profile">Add</string>
+    <string name="new_profile">Add Profile</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_rating">Rating (Default 1000)</string>
+    <string name="profile_color">Color (as an integer)</string>
+    <string name="provisional_text">Provisional?</string>
 
 </resources>

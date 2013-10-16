@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TextView
+        android:id="@+id/add_profile_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="@string/new_profile" />
+    
+    <EditText 
+        android:id="@+id/profile_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_profile_header"
+        android:layout_marginTop="5dp"
+        android:hint="@string/profile_name"/>
+    
+    <EditText 
+        android:id="@+id/profile_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_name"
+        android:layout_marginTop="5dp"
+        android:inputType="number"
+        android:hint="@string/profile_rating"/>
+    
+    <EditText 
+        android:id="@+id/profile_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_rating"
+        android:layout_marginTop="5dp"
+        android:inputType="number"
+        android:hint="@string/profile_color"/>
+    
+    <LinearLayout
+        android:id="@+id/my_check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+	    android:layout_below="@id/profile_color"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+        
+	    <CheckBox 
+	        android:id="@+id/profile_provisional"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"/>
+	    
+	    <TextView
+	        android:id="@+id/provisional_text"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="16sp"
+	        android:text="@string/provisional_text"/>
+    </LinearLayout>
+    
+
+</RelativeLayout>
