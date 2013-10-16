@@ -1,20 +1,27 @@
 package com.Centaurii.app.RatingCalculator.fragments;
 
+import java.util.ArrayList;
+import java.util.Set;
+
 import com.Centaurii.app.RatingCalculator.GameRatingCalculatorActivity;
 import com.Centaurii.app.RatingCalculator.R;
 import com.Centaurii.app.RatingCalculator.model.Profile;
+import com.Centaurii.app.RatingCalculator.util.ColorAdapter;
+import com.Centaurii.app.RatingCalculator.util.Tags;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 public class AddProfileFragment extends DialogFragment
 {
@@ -22,6 +29,15 @@ public class AddProfileFragment extends DialogFragment
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        
+        Log.i("AddProfileFragment", "Testing contents of ArrayList");
+        Set<String> colorSet = Tags.getColorMap().keySet();
+        ArrayList<String> colorList = new ArrayList<String>(colorSet);
+        for(String str: colorList)
+        {
+            Log.i("AddProfileFragment", str);
+        }
+        ColorAdapter adapter = new ColorAdapter(getActivity(), R.layout.color_spinner, colorList);
         
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View view = inflater.inflate(R.layout.fragment_add_profile, null);
@@ -46,6 +62,11 @@ public class AddProfileFragment extends DialogFragment
             
         });
         
+        final Spinner colorSpinner = (Spinner) view.findViewById(R.id.profile_color);
+        colorSpinner.setAdapter(adapter);
+        
+        
+        /* Handles the creation of the new profile through an AlertDialog */
         DialogInterface.OnClickListener buttonPress = new DialogInterface.OnClickListener()
         {
             @Override
@@ -56,7 +77,7 @@ public class AddProfileFragment extends DialogFragment
                     case DialogInterface.BUTTON_POSITIVE:
                         EditText name = (EditText) view.findViewById(R.id.profile_name);
                         EditText rating = (EditText) view.findViewById(R.id.profile_rating);
-                        EditText color = (EditText) view.findViewById(R.id.profile_color);
+                        Spinner color = (Spinner) view.findViewById(R.id.profile_color);
                         CheckBox provisional = (CheckBox) view.findViewById(R.id.profile_provisional);
                         
                         String profileName = name.getText().toString();
@@ -69,15 +90,7 @@ public class AddProfileFragment extends DialogFragment
                         {
                             e.printStackTrace();
                         }
-                        int profileColor = 0;
-                        try
-                        {
-                            profileColor = Integer.valueOf(color.getText().toString());
-                        }
-                        catch(NumberFormatException e)
-                        {
-                            e.printStackTrace();
-                        }
+                        int profileColor = Tags.getColorMap().get(color.getSelectedItem());
                         
                         Profile newProfile = new Profile(profileName,
                                                          profileRating,

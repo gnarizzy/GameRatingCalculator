@@ -31,20 +31,21 @@
         android:inputType="number"
         android:hint="@string/profile_rating"/>
     
-    <EditText 
+    <Spinner
         android:id="@+id/profile_color"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/profile_rating"
-        android:layout_marginTop="5dp"
-        android:inputType="number"
-        android:hint="@string/profile_color"/>
+        android:layout_centerHorizontal="true"
+        android:spinnerMode="dialog"
+        android:layout_marginTop="5dp"/>
     
     <LinearLayout
         android:id="@+id/my_check_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 	    android:layout_below="@id/profile_color"
+	    android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
         

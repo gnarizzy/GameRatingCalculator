@@ -13,5 +13,8 @@
     <string name="profile_rating">Rating (Default 1000)</string>
     <string name="profile_color">Color (as an integer)</string>
     <string name="provisional_text">Provisional?</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="provisional">Provisional</string>
+    <string name="color">Color</string>
 
 </resources>

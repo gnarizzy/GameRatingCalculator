@@ -21,7 +21,7 @@ public class OnProfileClickListener implements OnClickListener
     {
         activity.getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main_frame, new ProfileViewerFragment())
+                .replace(R.id.main_frame, new ProfileViewerFragment(), "profile")
                 .addToBackStack(null)
                 .commit();
     }
