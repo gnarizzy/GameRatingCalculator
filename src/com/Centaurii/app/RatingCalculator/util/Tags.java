@@ -22,6 +22,7 @@ public class Tags
     
     /** Useful constants.  These may be moved to the main activity for settings purposes*/
     public static final int MAX_PROFILES = 10;
+    public static final int MAX_GAME_PLAYERS = 6;
     public static final boolean REQUIRE_CHANGE_PASSWORD = true;
     public static final String DEFAULT_NAME = "Player";
     public static final int DEFAULT_RATING = 1000;

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+	<RelativeLayout
+        android:id="@+id/settings_board"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+        
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/go_back"/>
+        
+        <TextView 
+         	android:id="@+id/settings_header"
+         	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:layout_centerInParent="true"
+         	android:gravity="center"
+         	android:text="@string/settings" />
+        
+    </RelativeLayout>
+    
+	<TextView
+	    android:id="@+id/max_profiles"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@id/settings_board" />
+    
+</RelativeLayout>

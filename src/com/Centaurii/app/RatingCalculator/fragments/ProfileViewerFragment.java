@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 import com.Centaurii.app.RatingCalculator.GameRatingCalculatorActivity;
 import com.Centaurii.app.RatingCalculator.R;
+import com.Centaurii.app.RatingCalculator.adapters.ProfileListAdapter;
 import com.Centaurii.app.RatingCalculator.listeners.AddProfileOnClickListener;
+import com.Centaurii.app.RatingCalculator.listeners.GoBackClickListener;
 import com.Centaurii.app.RatingCalculator.model.Profile;
-import com.Centaurii.app.RatingCalculator.util.ProfileListAdapter;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -32,6 +33,9 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
             Bundle savedInstanceState) 
     {
         View view = inflater.inflate(R.layout.fragment_profiles, container, false);
+
+        Button goBack = (Button) view.findViewById(R.id.back_button);
+        goBack.setOnClickListener(new GoBackClickListener(getActivity()));
         
         TextView header = (TextView)view.findViewById(R.id.profile_header);
         header.setText("Profiles");

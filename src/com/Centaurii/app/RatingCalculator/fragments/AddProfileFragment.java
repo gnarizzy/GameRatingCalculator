@@ -5,8 +5,8 @@ import java.util.Set;
 
 import com.Centaurii.app.RatingCalculator.GameRatingCalculatorActivity;
 import com.Centaurii.app.RatingCalculator.R;
+import com.Centaurii.app.RatingCalculator.adapters.ColorAdapter;
 import com.Centaurii.app.RatingCalculator.model.Profile;
-import com.Centaurii.app.RatingCalculator.util.ColorAdapter;
 import com.Centaurii.app.RatingCalculator.util.Tags;
 
 import android.app.AlertDialog;

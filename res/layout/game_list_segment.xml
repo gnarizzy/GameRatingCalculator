@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TextView 
+        android:id="@+id/add_new_person_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/add_new_player"
+        android:visibility="invisible"/>
+    
+    <CheckBox
+        android:id="@+id/winner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+    
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/winner"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/profile_image"
+        android:background="#880000"/>
+    
+    <TextView 
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/profile_image"
+        android:layout_alignTop="@id/profile_image"
+        android:layout_marginLeft="10dp"
+        android:maxLength="20"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    
+    <TextView 
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/profile_image"
+        android:layout_alignBottom="@id/profile_image"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"/>
+    
+    <TextView
+        android:id="@+id/provisional"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:text="@string/provisional"/>
+
+</RelativeLayout>
