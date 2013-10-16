@@ -2,6 +2,7 @@ package com.Centaurii.app.RatingCalculator.listeners;
 
 import com.Centaurii.app.RatingCalculator.R;
 import com.Centaurii.app.RatingCalculator.fragments.ProfileViewerFragment;
+import com.Centaurii.app.RatingCalculator.util.Tags;
 
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -21,7 +22,7 @@ public class OnProfileClickListener implements OnClickListener
     {
         activity.getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main_frame, new ProfileViewerFragment(), "profile")
+                .replace(R.id.main_frame, new ProfileViewerFragment(), Tags.PROFILE_FRAGMENT)
                 .addToBackStack(null)
                 .commit();
     }

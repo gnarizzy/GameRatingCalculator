@@ -42,6 +42,9 @@ public class AddProfileFragment extends DialogFragment
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View view = inflater.inflate(R.layout.fragment_add_profile, null);
         
+        final EditText ratingTextBox = (EditText) view.findViewById(R.id.profile_rating);
+        ratingTextBox.setHint("Rating (Default is " + Tags.DEFAULT_RATING + ")");
+        
         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.profile_provisional);
         final LinearLayout myCheckBox = (LinearLayout) view.findViewById(R.id.my_check_box);
         myCheckBox.setOnClickListener(new OnClickListener()
@@ -81,14 +84,18 @@ public class AddProfileFragment extends DialogFragment
                         CheckBox provisional = (CheckBox) view.findViewById(R.id.profile_provisional);
                         
                         String profileName = name.getText().toString();
-                        int profileRating = 1000;
+                        if(profileName.equals(""))
+                        {
+                            profileName = Tags.DEFAULT_NAME;
+                        }
+                        int profileRating;
                         try
                         {
                             profileRating = Integer.valueOf(rating.getText().toString());
                         }
                         catch(NumberFormatException e)
                         {
-                            e.printStackTrace();
+                            profileRating = Tags.DEFAULT_RATING;
                         }
                         int profileColor = Tags.getColorMap().get(color.getSelectedItem());
                         
@@ -100,6 +107,11 @@ public class AddProfileFragment extends DialogFragment
                         ((GameRatingCalculatorActivity) AddProfileFragment.this.getActivity())
                                                     .getSavedProfiles()
                                                     .add(newProfile);
+                        ((ProfileViewerFragment) AddProfileFragment.this.getActivity()
+                                                                   .getSupportFragmentManager()
+                                                                   .findFragmentByTag(Tags.PROFILE_FRAGMENT))
+                                                                   .notifyAdapter();
+                       
                         break;
                         
                     case DialogInterface.BUTTON_NEGATIVE:

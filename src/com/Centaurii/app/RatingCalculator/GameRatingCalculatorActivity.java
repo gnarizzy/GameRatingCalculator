@@ -11,6 +11,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
 /**
  * Controller class that sets up listeners/event handlers and interacts with Calculator.java based on user input
@@ -51,6 +52,7 @@ public class GameRatingCalculatorActivity extends FragmentActivity
     protected void onStop()
     {
         super.onStop();
+        Log.i("GameRatingCalculator", "OnStop() is running");
         new SaveProfiles(this).execute();
     }
     
