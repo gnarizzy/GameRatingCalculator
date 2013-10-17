@@ -59,8 +59,6 @@ public class GameAdapter extends ArrayAdapter<Profile>
             holder = (ProfileHolder)v.getTag();
         }
         
-        //You may need to set stuff visible.  This is your personal note on that
-        
         final Profile prof = getItem(position);
         holder.profileImage.setBackgroundColor(prof.getFavColor());
         holder.profileName.setText(prof.getName());
@@ -73,7 +71,6 @@ public class GameAdapter extends ArrayAdapter<Profile>
         {
             holder.profileProvisional.setVisibility(View.GONE);
         }
-        
         
         return v;
     }

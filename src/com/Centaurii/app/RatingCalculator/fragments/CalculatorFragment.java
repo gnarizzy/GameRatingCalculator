@@ -1,6 +1,12 @@
 package com.Centaurii.app.RatingCalculator.fragments;
 
+import java.util.ArrayList;
+
+import com.Centaurii.app.RatingCalculator.GameRatingCalculatorActivity;
 import com.Centaurii.app.RatingCalculator.R;
+import com.Centaurii.app.RatingCalculator.adapters.GameAdapter;
+import com.Centaurii.app.RatingCalculator.listeners.AddRemovePlayersItemClickListener;
+import com.Centaurii.app.RatingCalculator.listeners.CalculatorButtonsOnClick;
 import com.Centaurii.app.RatingCalculator.listeners.GoBackClickListener;
 import com.Centaurii.app.RatingCalculator.model.Profile;
 
@@ -16,7 +22,12 @@ import android.widget.ListView;
 public class CalculatorFragment extends Fragment
 {
     ListView gameList;
-    ArrayAdapter<Profile> adapter;
+    ArrayAdapter<Profile> nonPlayersAdapter;
+    ArrayAdapter<Profile> playersAdapter;
+    ArrayList<Profile> nonPlayers;
+    ArrayList<Profile> players;
+    
+    Button whatIf, submit;
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) 
@@ -26,7 +37,25 @@ public class CalculatorFragment extends Fragment
         Button goBack = (Button) view.findViewById(R.id.back_button);
         goBack.setOnClickListener(new GoBackClickListener(getActivity()));
         
+        whatIf = (Button) view.findViewById(R.id.what_if_button);
+        whatIf.setOnClickListener(new CalculatorButtonsOnClick(getActivity(), false));
+        
+        submit = (Button) view.findViewById(R.id.submit_button);
+        submit.setOnClickListener(new CalculatorButtonsOnClick(getActivity(), true));
+        
+        nonPlayers = new ArrayList<Profile>();
+        nonPlayers.addAll(((GameRatingCalculatorActivity) getActivity()).getSavedProfiles());
+        players = new ArrayList<Profile>();
+        
+        nonPlayersAdapter = new GameAdapter(getActivity(), R.layout.game_list_segment, nonPlayers);
+        playersAdapter = new GameAdapter(getActivity(), R.layout.game_list_segment, players);
         gameList = (ListView) view.findViewById(R.id.game_list);
+        
+        View addNewPlayer = inflater.inflate(R.layout.add_new_player, null);
+        gameList.addFooterView(addNewPlayer);
+        gameList.setAdapter(playersAdapter);
+        gameList.setOnItemClickListener(new AddRemovePlayersItemClickListener(getActivity(),
+                nonPlayersAdapter, playersAdapter));
         
         return view;
     }

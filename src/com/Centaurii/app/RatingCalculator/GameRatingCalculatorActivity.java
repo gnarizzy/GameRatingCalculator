@@ -49,10 +49,10 @@ public class GameRatingCalculatorActivity extends FragmentActivity
     }
     
     @Override
-    protected void onStop()
+    protected void onPause()
     {
-        super.onStop();
-        Log.i("GameRatingCalculator", "OnStop() is running");
+        super.onPause();
+        Log.i("GameRatingCalculator", "OnPause() is running");
         new SaveProfiles(this).execute();
     }
     

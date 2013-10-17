@@ -47,7 +47,7 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
         ArrayList<Profile> profiles = ((GameRatingCalculatorActivity) getActivity()).getSavedProfiles();
         
         profilesList = (ListView)view.findViewById(R.id.profiles_list);
-        adapter = new ProfileListAdapter(getActivity(), R.layout.profile_list_segement, profiles);
+        adapter = new ProfileListAdapter(getActivity(), R.layout.profile_list_segment, profiles);
         
         profilesList.setAdapter(adapter);
         profilesList.setOnItemClickListener(this);
