@@ -37,12 +37,6 @@ public class CalculatorFragment extends Fragment
         Button goBack = (Button) view.findViewById(R.id.back_button);
         goBack.setOnClickListener(new GoBackClickListener(getActivity()));
         
-        whatIf = (Button) view.findViewById(R.id.what_if_button);
-        whatIf.setOnClickListener(new CalculatorButtonsOnClick(getActivity(), false));
-        
-        submit = (Button) view.findViewById(R.id.submit_button);
-        submit.setOnClickListener(new CalculatorButtonsOnClick(getActivity(), true));
-        
         nonPlayers = new ArrayList<Profile>();
         nonPlayers.addAll(((GameRatingCalculatorActivity) getActivity()).getSavedProfiles());
         players = new ArrayList<Profile>();
@@ -56,6 +50,11 @@ public class CalculatorFragment extends Fragment
         gameList.setAdapter(playersAdapter);
         gameList.setOnItemClickListener(new AddRemovePlayersItemClickListener(getActivity(),
                 nonPlayersAdapter, playersAdapter));
+        
+        //Button that actually calculates score
+        submit = (Button) view.findViewById(R.id.submit_button);
+        submit.setOnClickListener(new CalculatorButtonsOnClick(getActivity(), gameList));
+        
         
         return view;
     }

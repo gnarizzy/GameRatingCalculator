@@ -32,17 +32,10 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true" >
-    
-	     <Button
-			android:id="@+id/what_if_button"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignParentLeft="true"
-			android:text="@string/what_if" />
 	     
 	     <Button
 			android:id="@+id/submit_button"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_alignParentRight="true"
 			android:text="@string/submit" />
