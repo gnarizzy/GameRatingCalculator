@@ -47,7 +47,6 @@ public class GameAdapter extends ArrayAdapter<Profile>
             
             holder = new ProfileHolder();
             holder.winner = (CheckBox) v.findViewById(R.id.winner);
-            holder.addNewPlayer = (TextView) v.findViewById(R.id.add_new_person_button);
             holder.profileImage = (ImageView) v.findViewById(R.id.profile_image);
             holder.profileName = (TextView) v.findViewById(R.id.name);
             holder.profileRating = (TextView) v.findViewById(R.id.rating);
@@ -60,34 +59,21 @@ public class GameAdapter extends ArrayAdapter<Profile>
             holder = (ProfileHolder)v.getTag();
         }
         
-        if(getItem(position) == null)
+        //You may need to set stuff visible.  This is your personal note on that
+        
+        final Profile prof = getItem(position);
+        holder.profileImage.setBackgroundColor(prof.getFavColor());
+        holder.profileName.setText(prof.getName());
+        holder.profileRating.setText("" + prof.getRating());
+        if(prof.isProvisional())
         {
-            //Hide everything, this is the "Add new player" button
-            holder.winner.setVisibility(View.INVISIBLE);
-            holder.profileImage.setVisibility(View.INVISIBLE);
-            holder.profileName.setVisibility(View.INVISIBLE);
-            holder.profileRating.setVisibility(View.INVISIBLE);
-            holder.profileProvisional.setVisibility(View.INVISIBLE);
-            
-            holder.addNewPlayer.setVisibility(View.VISIBLE);
+            holder.profileProvisional.setVisibility(View.VISIBLE);
         }
         else
         {
-            //You may need to set stuff visible.  This is your personal note on that
-            
-            final Profile prof = getItem(position);
-            holder.profileImage.setBackgroundColor(prof.getFavColor());
-            holder.profileName.setText(prof.getName());
-            holder.profileRating.setText("" + prof.getRating());
-            if(prof.isProvisional())
-            {
-                holder.profileProvisional.setVisibility(View.VISIBLE);
-            }
-            else
-            {
-                holder.profileProvisional.setVisibility(View.GONE);
-            }
+            holder.profileProvisional.setVisibility(View.GONE);
         }
+        
         
         return v;
     }
