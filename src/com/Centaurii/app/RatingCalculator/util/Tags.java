@@ -10,6 +10,9 @@ public class Tags
     /** Storage Location*/
     public static final String RATINGS_FOLDER = Environment.getExternalStorageDirectory() + "/RatingsFolder/";
     public static final String RATINGS_FILE = "profiles";
+    public static final String MAX_PROFILES = "max_prof";
+    public static final String MAX_PLAYERS = "max_play";
+    public static final String DEFAULT_RATING = "def_rate";
     
     /** Fragment Strings*/
     public static final String PROFILE_FRAGMENT = "profile";
@@ -21,11 +24,8 @@ public class Tags
     public static final String FAV_COLOR = "color";
     
     /** Useful constants.  These may be moved to the main activity for settings purposes*/
-    public static final int MAX_PROFILES = 20;
-    public static final int MAX_GAME_PLAYERS = 6;
     public static final boolean REQUIRE_CHANGE_PASSWORD = true;
     public static final String DEFAULT_NAME = "Player";
-    public static final int DEFAULT_RATING = 1000;
     
     /** Color table*/
     public static HashMap<String, Integer> COLOR_MAP = new HashMap<String, Integer>();

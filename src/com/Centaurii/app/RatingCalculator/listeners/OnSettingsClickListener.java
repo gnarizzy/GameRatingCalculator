@@ -1,8 +1,8 @@
 package com.Centaurii.app.RatingCalculator.listeners;
 
-import com.Centaurii.app.RatingCalculator.R;
-import com.Centaurii.app.RatingCalculator.fragments.SettingsFragment;
+import com.Centaurii.app.RatingCalculator.SettingsActivity;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,11 +19,8 @@ public class OnSettingsClickListener implements OnClickListener
     @Override
     public void onClick(View view)
     {
-        act.getSupportFragmentManager()
-           .beginTransaction()
-           .replace(R.id.main_frame, new SettingsFragment())
-           .addToBackStack(null)
-           .commit();
+        Intent intent = new Intent(act, SettingsActivity.class);
+        act.startActivity(intent);
     }
 
 }

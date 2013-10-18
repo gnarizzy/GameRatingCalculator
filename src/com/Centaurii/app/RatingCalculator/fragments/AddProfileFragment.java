@@ -1,6 +1,7 @@
 package com.Centaurii.app.RatingCalculator.fragments;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Set;
 
 import com.Centaurii.app.RatingCalculator.GameRatingCalculatorActivity;
@@ -43,7 +44,7 @@ public class AddProfileFragment extends DialogFragment
         final View view = inflater.inflate(R.layout.fragment_add_profile, null);
         
         final EditText ratingTextBox = (EditText) view.findViewById(R.id.profile_rating);
-        ratingTextBox.setHint("Rating (Default is " + Tags.DEFAULT_RATING + ")");
+        ratingTextBox.setHint("Rating (Default is " + GameRatingCalculatorActivity.DEFAULT_RATING() + ")");
         
         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.profile_provisional);
         final LinearLayout myCheckBox = (LinearLayout) view.findViewById(R.id.my_check_box);
@@ -78,6 +79,7 @@ public class AddProfileFragment extends DialogFragment
                 switch(id)
                 {
                     case DialogInterface.BUTTON_POSITIVE:
+                        Random rand = new Random();
                         EditText name = (EditText) view.findViewById(R.id.profile_name);
                         EditText rating = (EditText) view.findViewById(R.id.profile_rating);
                         Spinner color = (Spinner) view.findViewById(R.id.profile_color);
@@ -86,7 +88,7 @@ public class AddProfileFragment extends DialogFragment
                         String profileName = name.getText().toString();
                         if(profileName.equals(""))
                         {
-                            profileName = Tags.DEFAULT_NAME;
+                            profileName = Tags.DEFAULT_NAME + (rand.nextInt() % 10000);
                         }
                         int profileRating;
                         try
@@ -95,7 +97,7 @@ public class AddProfileFragment extends DialogFragment
                         }
                         catch(NumberFormatException e)
                         {
-                            profileRating = Tags.DEFAULT_RATING;
+                            profileRating = GameRatingCalculatorActivity.DEFAULT_RATING();
                         }
                         int profileColor = Tags.getColorMap().get(color.getSelectedItem());
                         

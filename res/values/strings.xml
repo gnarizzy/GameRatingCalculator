@@ -22,5 +22,16 @@
     <string name="add_new_player">Add New Player</string>
     <string name="results">Results</string>
     <string name="player_options">Would you like to delete this person or make them the winner?</string>
+    
+    
+    <string name="max_profiles">Max Number of Profiles</string>
+    <string name="max_profiles_summary">The maximum allowed number of profiles.</string>
+    
+    <string name="max_players">Max Number of Players</string>
+    <string name="max_players_summary">The maximum allowed number of players in a game.</string>
+    
+    <string name="default_rating">Default Rating</string>
+    <string name="default_rating_summary">The default rating given to a player profile</string>
+    
 
 </resources>

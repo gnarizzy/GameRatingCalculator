@@ -47,14 +47,15 @@ public class CalculatorFragment extends Fragment
         
         View addNewPlayer = inflater.inflate(R.layout.add_new_player, null);
         gameList.addFooterView(addNewPlayer);
-        gameList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        gameList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         gameList.setAdapter(playersAdapter);
         gameList.setOnItemClickListener(new AddRemovePlayersItemClickListener(getActivity(),
                 nonPlayersAdapter, playersAdapter));
         
         //Button that actually calculates score
         submit = (Button) view.findViewById(R.id.submit_button);
-        submit.setOnClickListener(new CalculatorButtonsOnClick(getActivity(), gameList));
+        submit.setOnClickListener(new CalculatorButtonsOnClick(getActivity(), gameList,
+                playersAdapter));
         
         
         return view;

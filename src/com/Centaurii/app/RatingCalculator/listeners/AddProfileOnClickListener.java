@@ -2,7 +2,6 @@ package com.Centaurii.app.RatingCalculator.listeners;
 
 import com.Centaurii.app.RatingCalculator.GameRatingCalculatorActivity;
 import com.Centaurii.app.RatingCalculator.fragments.AddProfileFragment;
-import com.Centaurii.app.RatingCalculator.util.Tags;
 
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,13 +19,13 @@ public class AddProfileOnClickListener implements OnClickListener
     @Override
     public void onClick(View view)
     {
-        if(activity.getSavedProfiles().size() < Tags.MAX_PROFILES)
+        if(activity.getSavedProfiles().size() < GameRatingCalculatorActivity.MAX_PROFILES())
         {
             new AddProfileFragment().show(activity.getSupportFragmentManager(), null);
         }
         else
         {
-            Toast.makeText(activity, "You cannot exceed " + Tags.MAX_PROFILES
+            Toast.makeText(activity, "You cannot exceed " + GameRatingCalculatorActivity.MAX_PROFILES()
                     + " profiles with your current settings", Toast.LENGTH_SHORT).show();
         }
     }
