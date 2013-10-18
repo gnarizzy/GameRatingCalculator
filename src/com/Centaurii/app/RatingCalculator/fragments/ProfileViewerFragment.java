@@ -60,8 +60,14 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
     {
         DeleteListener listener = new DeleteListener((GameRatingCalculatorActivity) getActivity(), position);
         
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        
+        View playerOptions = inflater.inflate(R.layout.player_options, null, false);
+        
+        ((TextView) playerOptions.findViewById(R.id.player_options)).setText("What would you like to do?");
+        
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("What would you like to do?")
+        builder.setView(playerOptions)
                .setPositiveButton("Delete", listener)
                .setNeutralButton("Change\nProvisional", listener)
                .setNegativeButton("Nothing", listener)
