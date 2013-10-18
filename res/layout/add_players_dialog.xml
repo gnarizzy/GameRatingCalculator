@@ -8,6 +8,7 @@
         android:id="@+id/non_players"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:choiceMode="multipleChoice"
         android:listSelector="@drawable/player_selector"/>
 
 </LinearLayout>

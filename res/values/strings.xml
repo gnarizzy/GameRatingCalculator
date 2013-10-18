@@ -20,5 +20,6 @@
     <string name="submit">Calculate</string>
     <string name="go_back">Go Back</string>
     <string name="add_new_player">Add New Player</string>
+    <string name="results">Results</string>
 
 </resources>

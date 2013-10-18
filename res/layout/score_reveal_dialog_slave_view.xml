@@ -8,12 +8,15 @@
         android:id="@+id/player_new_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#ff0000"
+        android:textSize="18sp"
         android:layout_alignParentRight="true" />
     
     <TextView
         android:id="@+id/player_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/player_new_score" />
+        android:textSize="18sp"
+        android:layout_toLeftOf="@id/player_new_score"/>
 
 </RelativeLayout>
