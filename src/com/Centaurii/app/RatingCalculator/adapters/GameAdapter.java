@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckedTextView;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,7 +46,7 @@ public class GameAdapter extends ArrayAdapter<Profile>
             v = inflater.inflate(resource, parent, false);
             
             holder = new ProfileHolder();
-            holder.winner = (CheckedTextView) v.findViewById(R.id.winner);
+            holder.winner = (CheckBox) v.findViewById(R.id.winner);
             holder.profileImage = (ImageView) v.findViewById(R.id.profile_image);
             holder.profileName = (TextView) v.findViewById(R.id.name);
             holder.profileRating = (TextView) v.findViewById(R.id.rating);
@@ -75,9 +75,15 @@ public class GameAdapter extends ArrayAdapter<Profile>
         return v;
     }
     
+    @Override
+    public boolean hasStableIds()
+    {
+        return true;
+    }
+    
     static class ProfileHolder
     {
-        CheckedTextView winner;
+        CheckBox winner;
         TextView addNewPlayer;
         ImageView profileImage;
         TextView profileName;

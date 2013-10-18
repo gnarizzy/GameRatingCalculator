@@ -21,5 +21,6 @@
     <string name="go_back">Go Back</string>
     <string name="add_new_player">Add New Player</string>
     <string name="results">Results</string>
+    <string name="player_options">Would you like to delete this person or make them the winner?</string>
 
 </resources>
