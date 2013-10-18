@@ -21,6 +21,5 @@
         android:defaultValue="1000"
         android:inputType="number"
         android:key="def_rate" />
-    "
 
 </PreferenceScreen>

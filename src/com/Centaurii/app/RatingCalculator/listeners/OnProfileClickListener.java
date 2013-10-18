@@ -22,6 +22,7 @@ public class OnProfileClickListener implements OnClickListener
     {
         activity.getSupportFragmentManager()
                 .beginTransaction()
+                .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_right)
                 .replace(R.id.main_frame, new ProfileViewerFragment(), Tags.PROFILE_FRAGMENT)
                 .addToBackStack(null)
                 .commit();

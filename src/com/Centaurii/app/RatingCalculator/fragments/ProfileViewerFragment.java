@@ -61,9 +61,10 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
         DeleteListener listener = new DeleteListener((GameRatingCalculatorActivity) getActivity(), position);
         
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("Delete Profile?")
-               .setPositiveButton("Yes", listener)
-               .setNegativeButton("No", listener)
+        builder.setMessage("What would you like to do?")
+               .setPositiveButton("Delete", listener)
+               .setNeutralButton("Change\nProvisional", listener)
+               .setNegativeButton("Nothing", listener)
                .create()
                .show();
     }
@@ -92,6 +93,11 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
                 case Dialog.BUTTON_POSITIVE:
                     act.getSavedProfiles().remove(position);
                     ProfileViewerFragment.this.adapter.notifyDataSetChanged();
+                    break;
+                case Dialog.BUTTON_NEUTRAL:
+                    Profile temp = act.getSavedProfiles().get(position);
+                    temp.setProvisional(!temp.isProvisional());
+                    adapter.notifyDataSetChanged();
                     break;
                 case Dialog.BUTTON_NEGATIVE:
                     break;

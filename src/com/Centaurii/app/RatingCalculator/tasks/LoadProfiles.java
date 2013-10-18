@@ -28,7 +28,7 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
     @Override
     protected void onPreExecute()
     {
-        splashScreen = new Dialog(activity, R.style.splashTheme);
+        splashScreen = new Dialog(activity, R.style.appTheme);
         splashScreen.setCancelable(false);
         splashScreen.setContentView(R.layout.splash_screen);
         splashScreen.show();

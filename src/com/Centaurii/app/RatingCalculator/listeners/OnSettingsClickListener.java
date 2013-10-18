@@ -1,5 +1,6 @@
 package com.Centaurii.app.RatingCalculator.listeners;
 
+import com.Centaurii.app.RatingCalculator.R;
 import com.Centaurii.app.RatingCalculator.SettingsActivity;
 
 import android.content.Intent;
@@ -21,6 +22,7 @@ public class OnSettingsClickListener implements OnClickListener
     {
         Intent intent = new Intent(act, SettingsActivity.class);
         act.startActivity(intent);
+        act.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 
 }

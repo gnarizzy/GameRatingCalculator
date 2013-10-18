@@ -8,21 +8,21 @@
     <Button
         android:id="@+id/calculator"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:gravity="center"
         android:text="@string/ratings_calculator" />
     
     <Button
         android:id="@+id/profiles"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:gravity="center"
         android:text="@string/profiles" />
     
     <Button
         android:id="@+id/settings"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:gravity="center"
         android:text="@string/settings" />
 
