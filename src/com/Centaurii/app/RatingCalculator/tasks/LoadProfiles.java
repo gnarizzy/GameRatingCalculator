@@ -50,7 +50,7 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
         else
         {
             //Inform user that profile information cannot be used
-            Log.i("LoadProfiles", "No external storage");
+            Log.i("LoadProfiles", "No external storage.  You will not be able to save profiles");
         }
         
         

@@ -24,6 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity 
+            android:name="com.Centaurii.app.RatingCalculator.SettingsActivity"
+            android:label="@string/appName">
+        </activity>
     </application>
 
 </manifest>
