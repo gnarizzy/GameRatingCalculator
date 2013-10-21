@@ -1,6 +1,7 @@
 package com.Centaurii.app.RatingCalculator.fragments;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Set;
 
@@ -15,7 +16,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,13 +31,8 @@ public class AddProfileFragment extends DialogFragment
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         
-        Log.i("AddProfileFragment", "Testing contents of ArrayList");
         Set<String> colorSet = Tags.getColorMap().keySet();
         ArrayList<String> colorList = new ArrayList<String>(colorSet);
-        for(String str: colorList)
-        {
-            Log.i("AddProfileFragment", str);
-        }
         ColorAdapter adapter = new ColorAdapter(getActivity(), R.layout.color_spinner, colorList);
         
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -46,6 +41,7 @@ public class AddProfileFragment extends DialogFragment
         final EditText ratingTextBox = (EditText) view.findViewById(R.id.profile_rating);
         ratingTextBox.setHint("Rating (Default is " + GameRatingCalculatorActivity.DEFAULT_RATING() + ")");
         
+        //Make the whole checkbox area pressable
         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.profile_provisional);
         final LinearLayout myCheckBox = (LinearLayout) view.findViewById(R.id.my_check_box);
         myCheckBox.setOnClickListener(new OnClickListener()
@@ -106,9 +102,10 @@ public class AddProfileFragment extends DialogFragment
                                                          provisional.isChecked(),
                                                          profileColor);
                         
-                        ((GameRatingCalculatorActivity) AddProfileFragment.this.getActivity())
-                                                    .getSavedProfiles()
-                                                    .add(newProfile);
+                        ArrayList<Profile> profiles = ((GameRatingCalculatorActivity) AddProfileFragment.this.getActivity())
+                                                    .getSavedProfiles();
+                        profiles.add(newProfile);
+                        Collections.sort(profiles);
                         ((ProfileViewerFragment) AddProfileFragment.this.getActivity()
                                                                    .getSupportFragmentManager()
                                                                    .findFragmentByTag(Tags.PROFILE_FRAGMENT))

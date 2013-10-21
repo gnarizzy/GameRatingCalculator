@@ -1,5 +1,6 @@
 package com.Centaurii.app.RatingCalculator;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ public class SettingsActivity extends PreferenceActivity
     protected void onPostCreate(Bundle savedInstanceState)
     {
         super.onPostCreate(savedInstanceState);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         
         LayoutInflater inflater = getLayoutInflater();
         

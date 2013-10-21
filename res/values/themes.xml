@@ -24,5 +24,6 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:buttonStyle">@style/buttonTheme</item>
         <item name="android:alertDialogStyle">@style/dialogTheme</item>
+        <item name="android:listChoiceIndicatorMultiple">@drawable/check_box</item>
     </style>
 </resources>

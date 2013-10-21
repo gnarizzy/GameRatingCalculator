@@ -111,6 +111,6 @@ public class Profile implements Comparable<Profile>
     @Override
     public int compareTo(Profile player)
     {
-        return rating - player.getRating();
+        return player.getRating() - rating;
     }
 }

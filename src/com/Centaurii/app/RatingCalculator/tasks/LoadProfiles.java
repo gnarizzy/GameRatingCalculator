@@ -4,11 +4,14 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import com.Centaurii.app.RatingCalculator.GameRatingCalculatorActivity;
 import com.Centaurii.app.RatingCalculator.R;
 import com.Centaurii.app.RatingCalculator.implementations.ProfileHandler;
 import com.Centaurii.app.RatingCalculator.interfaces.ProfileRetrieveAndSave;
+import com.Centaurii.app.RatingCalculator.model.Profile;
 import com.Centaurii.app.RatingCalculator.util.Tags;
 
 import android.app.Dialog;
@@ -44,7 +47,9 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
             Log.i("LoadProfiles", "Contents of file:\n" + rawProfile);
             
             ProfileRetrieveAndSave prof = new ProfileHandler();
-            activity.setSavedProfiles(prof.getProfiles(rawProfile));
+            ArrayList<Profile> listOfProfiles = prof.getProfiles(rawProfile);
+            Collections.sort(listOfProfiles);
+            activity.setSavedProfiles(listOfProfiles);
         }
         //External Storage is not available  
         else

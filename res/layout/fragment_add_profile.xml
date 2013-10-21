@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/add_profile_header"
+        android:gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:hint="@string/profile_name"/>
     
@@ -28,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/profile_name"
         android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
         android:inputType="number"
         android:hint="@string/profile_rating"/>
     
