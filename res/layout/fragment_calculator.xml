@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_table"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+    
+    <RelativeLayout
+		android:id="@+id/calculator_board"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true" >
+		
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/go_back"/>
+    
+	    <TextView 
+			android:id="@+id/calculator_header"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:gravity="center"
+			android:textColor="#ffff00"
+			android:text="@string/ratings_calculator"/>
+    
+	</RelativeLayout>
+	
+    <RelativeLayout
+		android:id="@+id/calculator_actions"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true" >
+	     
+	     <Button
+			android:id="@+id/submit_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:text="@string/submit" />
+    
+	</RelativeLayout>
+	
+    <ListView
+        android:id="@+id/game_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/list_background"
+        android:listSelector="@drawable/list_selector"
+        android:layout_below="@id/calculator_board"
+        android:layout_above="@id/calculator_actions"/>
+    
+</RelativeLayout>
