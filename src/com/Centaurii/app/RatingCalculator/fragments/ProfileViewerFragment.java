@@ -1,6 +1,7 @@
 package com.Centaurii.app.RatingCalculator.fragments;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -57,6 +58,8 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
                 new AddProfileOnClickListener((GameRatingCalculatorActivity)getActivity()));
         
         ArrayList<Profile> profiles = ((GameRatingCalculatorActivity) getActivity()).getSavedProfiles();
+        
+        Collections.sort(profiles);
         
         profilesList = (ListView)view.findViewById(R.id.profiles_list);
         adapter = new ProfileListAdapter(getActivity(), R.layout.profile_list_segment, profiles);
