@@ -46,6 +46,9 @@ public class Tags
             COLOR_MAP.put("Red", Color.RED);
             COLOR_MAP.put("Orange", 0xffffa500);
             COLOR_MAP.put("Purple", 0xff800080);
+            COLOR_MAP.put("Hunter Green", 0xff355E3B);
+            COLOR_MAP.put("Pink", 0xffF660AB);
+            COLOR_MAP.put("Old Gold", 0xffCFB53B);
         }
         return COLOR_MAP;
     }
