@@ -10,6 +10,7 @@ import com.Centaurii.app.RatingCalculator.listeners.CalculatorButtonsOnClick;
 import com.Centaurii.app.RatingCalculator.listeners.GoBackClickListener;
 import com.Centaurii.app.RatingCalculator.model.Profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -39,23 +40,31 @@ public class CalculatorFragment extends Fragment
         
         nonPlayers = new ArrayList<Profile>();
         nonPlayers.addAll(((GameRatingCalculatorActivity) getActivity()).getSavedProfiles());
-        players = new ArrayList<Profile>();
-        
-        nonPlayersAdapter = new GameAdapter(getActivity(), R.layout.game_list_segment, nonPlayers);
-        playersAdapter = new GameAdapter(getActivity(), R.layout.game_list_segment, players);
-        gameList = (ListView) view.findViewById(R.id.game_list);
-        
-        View addNewPlayer = inflater.inflate(R.layout.add_new_player, null);
-        gameList.addFooterView(addNewPlayer);
-        gameList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        gameList.setAdapter(playersAdapter);
-        gameList.setOnItemClickListener(new AddRemovePlayersItemClickListener(getActivity(),
-                nonPlayersAdapter, playersAdapter));
-        
-        //Button that actually calculates score
-        submit = (Button) view.findViewById(R.id.submit_button);
-        submit.setOnClickListener(new CalculatorButtonsOnClick(getActivity(), gameList,
-                playersAdapter));
+        if(nonPlayers != null)
+        {
+            players = new ArrayList<Profile>();
+            
+            nonPlayersAdapter = new GameAdapter(getActivity(), R.layout.game_list_segment, nonPlayers);
+            playersAdapter = new GameAdapter(getActivity(), R.layout.game_list_segment, players);
+            gameList = (ListView) view.findViewById(R.id.game_list);
+            
+            View addNewPlayer = inflater.inflate(R.layout.add_new_player, null);
+            gameList.addFooterView(addNewPlayer);
+            gameList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            gameList.setAdapter(playersAdapter);
+            gameList.setOnItemClickListener(new AddRemovePlayersItemClickListener(getActivity(),
+                    nonPlayersAdapter, playersAdapter));
+            
+            //Button that actually calculates score
+            submit = (Button) view.findViewById(R.id.submit_button);
+            submit.setOnClickListener(new CalculatorButtonsOnClick(getActivity(), gameList,
+                    playersAdapter));
+        }
+        else
+        {
+            Intent intent = getActivity().getIntent();
+            getActivity().startActivity(intent);
+        }
         
         
         return view;

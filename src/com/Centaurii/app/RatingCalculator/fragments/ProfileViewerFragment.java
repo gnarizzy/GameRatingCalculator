@@ -18,6 +18,7 @@ import com.Centaurii.app.RatingCalculator.util.Tags;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -59,13 +60,21 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
         
         ArrayList<Profile> profiles = ((GameRatingCalculatorActivity) getActivity()).getSavedProfiles();
         
-        Collections.sort(profiles);
+        if(profiles != null)
+        {
+            Collections.sort(profiles);
         
-        profilesList = (ListView)view.findViewById(R.id.profiles_list);
-        adapter = new ProfileListAdapter(getActivity(), R.layout.profile_list_segment, profiles);
-        
-        profilesList.setAdapter(adapter);
-        profilesList.setOnItemClickListener(this);
+            profilesList = (ListView)view.findViewById(R.id.profiles_list);
+            adapter = new ProfileListAdapter(getActivity(), R.layout.profile_list_segment, profiles);
+            
+            profilesList.setAdapter(adapter);
+            profilesList.setOnItemClickListener(this);
+        }
+        else
+        {
+            Intent intent = getActivity().getIntent();
+            getActivity().startActivity(intent);
+        }
         
         return view;
     }
