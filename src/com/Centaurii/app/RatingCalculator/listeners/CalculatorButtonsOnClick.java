@@ -80,6 +80,11 @@ public class CalculatorButtonsOnClick implements OnClickListener
             TextView newScore = (TextView) slaveView.findViewById(R.id.player_new_score);
             
             name.setText(calculateArr[i].getName() + ":");
+            if(scores[i] > 99999999)
+            {
+                Toast.makeText(act, calculateArr[i].getName() + "'s rating can go no higher", Toast.LENGTH_SHORT).show();
+                scores[i] = 99999999;
+            }
             newScore.setText("" + scores[i]);
             if(i == winner)
             {

@@ -36,6 +36,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ProfileViewerFragment extends Fragment implements OnItemClickListener
 {
@@ -220,7 +221,14 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
         public void onClick(DialogInterface arg0, int arg1)
         {
             prof.setName(name.getText().toString());
-            prof.setRating(Integer.valueOf(rating.getText().toString()));
+            try
+            {
+                prof.setRating(Integer.valueOf(rating.getText().toString()));
+            }
+            catch(Exception e)
+            {
+                Toast.makeText(getActivity(), "Rating is not valid because it is too high.", Toast.LENGTH_SHORT).show();
+            }
             prof.setFavColor(Tags.getColorMap().get(colorSpinner.getSelectedItem()));
             prof.setProvisional(provisional.isChecked());
             adapter.notifyDataSetChanged();
