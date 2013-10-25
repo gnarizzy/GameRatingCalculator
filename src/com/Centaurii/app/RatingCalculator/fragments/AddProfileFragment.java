@@ -1,7 +1,6 @@
 package com.Centaurii.app.RatingCalculator.fragments;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 import java.util.Set;
 
@@ -105,7 +104,6 @@ public class AddProfileFragment extends DialogFragment
                         ArrayList<Profile> profiles = ((GameRatingCalculatorActivity) AddProfileFragment.this.getActivity())
                                                     .getSavedProfiles();
                         profiles.add(newProfile);
-                        Collections.sort(profiles);
                         ((ProfileViewerFragment) AddProfileFragment.this.getActivity()
                                                                    .getSupportFragmentManager()
                                                                    .findFragmentByTag(Tags.PROFILE_FRAGMENT))

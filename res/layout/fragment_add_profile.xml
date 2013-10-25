@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/profile_name"
         android:layout_marginTop="5dp"
-        android:maxLength="9"
+        android:maxLength="8"
         android:gravity="center_horizontal"
         android:inputType="number"
         android:hint="@string/profile_rating"/>
