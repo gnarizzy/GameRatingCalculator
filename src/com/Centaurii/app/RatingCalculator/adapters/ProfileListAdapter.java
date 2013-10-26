@@ -1,5 +1,6 @@
 package com.Centaurii.app.RatingCalculator.adapters;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.Centaurii.app.RatingCalculator.R;
@@ -72,6 +73,13 @@ public class ProfileListAdapter extends ArrayAdapter<Profile>
         }
         
         return v;
+    }
+    
+    @Override
+    public void notifyDataSetChanged()
+    {
+        Collections.sort(objects);
+        super.notifyDataSetChanged();
     }
     
     static class ProfileHandler

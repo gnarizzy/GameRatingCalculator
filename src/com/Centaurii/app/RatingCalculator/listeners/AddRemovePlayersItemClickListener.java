@@ -73,7 +73,7 @@ public class AddRemovePlayersItemClickListener implements OnItemClickListener
 
             builder.setView(alertView)
                    .setPositiveButton("Winner", listener) //This listener makes the current choice a winner
-                   .setNegativeButton("Delete", listener) //This listener removes the current choice
+                   .setNegativeButton("Remove", listener) //This listener removes the current choice
                    .create()
                    .show();
         }
