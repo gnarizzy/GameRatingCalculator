@@ -82,8 +82,11 @@ public class CalculatorButtonsOnClick implements OnClickListener
             name.setText(calculateArr[i].getName() + ":");
             if(scores[i] > 99999999)
             {
-                Toast.makeText(act, calculateArr[i].getName() + "'s rating can go no higher", Toast.LENGTH_SHORT).show();
                 scores[i] = 99999999;
+            }
+            else if(scores[i] < 0)
+            {
+                scores[i] = 0;
             }
             newScore.setText("" + scores[i]);
             if(i == winner)
