@@ -22,6 +22,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class AddProfileFragment extends DialogFragment
 {
@@ -40,7 +41,9 @@ public class AddProfileFragment extends DialogFragment
         final EditText ratingTextBox = (EditText) view.findViewById(R.id.profile_rating);
         ratingTextBox.setHint("Rating (Default is " + GameRatingCalculatorActivity.DEFAULT_RATING() + ")");
         
-        //Make the whole checkbox area pressable
+        //Make the whole checkbox area pressable and make num_prov_games appear
+        final EditText numProvGames = (EditText) view.findViewById(R.id.num_prov_games);
+        numProvGames.setHint("Provisional Games (Default is " + GameRatingCalculatorActivity.DEFAULT_PROVISIONAL() + ")");
         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.profile_provisional);
         final LinearLayout myCheckBox = (LinearLayout) view.findViewById(R.id.my_check_box);
         myCheckBox.setOnClickListener(new OnClickListener()
@@ -52,10 +55,12 @@ public class AddProfileFragment extends DialogFragment
                 if(checkBox.isChecked())
                 {
                     checkBox.setChecked(false);
+                    numProvGames.setVisibility(View.GONE);
                 }
                 else
                 {
                     checkBox.setChecked(true);
+                    numProvGames.setVisibility(View.VISIBLE);
                 }
             }
             
@@ -79,13 +84,16 @@ public class AddProfileFragment extends DialogFragment
                         EditText rating = (EditText) view.findViewById(R.id.profile_rating);
                         Spinner color = (Spinner) view.findViewById(R.id.profile_color);
                         CheckBox provisional = (CheckBox) view.findViewById(R.id.profile_provisional);
+                        EditText numProvGames = (EditText) view.findViewById(R.id.num_prov_games);
                         
                         String profileName = name.getText().toString();
                         if(profileName.equals(""))
                         {
                             profileName = Tags.DEFAULT_NAME + (rand.nextInt() % 10000);
                         }
-                        int profileRating;
+                        
+                        //Check to see if adequate values were put in
+                        int profileRating, profileProvGames;
                         try
                         {
                             profileRating = Integer.valueOf(rating.getText().toString());
@@ -94,11 +102,26 @@ public class AddProfileFragment extends DialogFragment
                         {
                             profileRating = GameRatingCalculatorActivity.DEFAULT_RATING();
                         }
+                        try
+                        {
+                            profileProvGames = Integer.valueOf(numProvGames.getText().toString());
+                            if(profileProvGames == 0)
+                            {
+                                Toast.makeText(getActivity(), "Value of zero not accepted, using "
+                                        + "default provisional game total instead.", Toast.LENGTH_SHORT).show();
+                                throw new NumberFormatException();
+                            }
+                        }
+                        catch(NumberFormatException e)
+                        {
+                            profileProvGames = GameRatingCalculatorActivity.DEFAULT_PROVISIONAL();
+                        }
                         int profileColor = Tags.getColorMap().get(color.getSelectedItem());
                         
                         Profile newProfile = new Profile(profileName,
                                                          profileRating,
                                                          provisional.isChecked(),
+                                                         (provisional.isChecked() ? profileProvGames : 0),
                                                          profileColor);
                         
                         ArrayList<Profile> profiles = ((GameRatingCalculatorActivity) AddProfileFragment.this.getActivity())

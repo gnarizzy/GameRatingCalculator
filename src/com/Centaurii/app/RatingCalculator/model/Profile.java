@@ -9,6 +9,7 @@ public class Profile implements Comparable<Profile>
     private String name;
     private int rating;
     private boolean provisional;
+    private int provisionalGamesLeft;
     private int favColor;
     private Drawable profilePicture;
     
@@ -23,13 +24,14 @@ public class Profile implements Comparable<Profile>
      * @param favColor
      * @param profilePicture
      */
-    public Profile(String name, int rating, boolean provisional,
-            int favColor, Drawable profilePicture)
+    public Profile(String name, int rating, boolean provisional, 
+            int provisionalGamesLeft, int favColor, Drawable profilePicture)
     {
         super();
         this.name = name;
         this.rating = rating;
         this.provisional = provisional;
+        this.provisionalGamesLeft = provisionalGamesLeft;
         this.favColor = favColor;
         this.profilePicture = profilePicture;
     }
@@ -42,9 +44,10 @@ public class Profile implements Comparable<Profile>
      * @param provisional
      * @param favColor
      */
-    public Profile(String name, int rating, boolean provisional, int favColor)
+    public Profile(String name, int rating, boolean provisional, 
+            int provisionalGamesLeft, int favColor)
     {
-        this(name, rating, provisional, favColor, null);
+        this(name, rating, provisional, provisionalGamesLeft, favColor, null);
     }
     
     /**
@@ -53,9 +56,9 @@ public class Profile implements Comparable<Profile>
      * @param name
      * @param rating
      */
-    public Profile(String name, int rating, boolean provisional)
+    public Profile(String name, int rating)
     {
-        this(name, rating, provisional, rand.nextInt(), null);
+        this(name, rating, false, 0, rand.nextInt() | 0xff000000, null);
     }
 
     public String getName()
@@ -86,6 +89,16 @@ public class Profile implements Comparable<Profile>
     public void setProvisional(boolean provisional)
     {
         this.provisional = provisional;
+    }
+
+    public int getProvisionalGamesLeft()
+    {
+        return provisionalGamesLeft;
+    }
+
+    public void setProvisionalGamesLeft(int provisionalGamesLeft)
+    {
+        this.provisionalGamesLeft = provisionalGamesLeft;
     }
 
     public int getFavColor()

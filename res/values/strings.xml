@@ -14,7 +14,7 @@
     <string name="profile_color">Color (as an integer)</string>
     <string name="provisional_text">Provisional?</string>
     <string name="profile_image">Profile Image</string>
-    <string name="provisional">Provisional</string>
+    <string name="provisional">Prov</string>
     <string name="color">Color</string>
     <string name="what_if">What if?</string>
     <string name="submit">Calculate</string>
@@ -22,13 +22,17 @@
     <string name="add_new_player">Add New Player</string>
     <string name="results">Results</string>
     <string name="player_options">Would you like to delete this person or make them the winner?</string>
+    <string name="num_prov_games">Provisional Games Left</string>
     
     
     <string name="max_profiles">Max Number of Profiles</string>
-    <string name="max_profiles_summary">The maximum allowed number of profiles.</string>
+    <string name="max_profiles_summary">The maximum allowed number of profiles</string>
     
     <string name="max_players">Max Number of Players</string>
-    <string name="max_players_summary">The maximum allowed number of players in a game.</string>
+    <string name="max_players_summary">The maximum allowed number of players in a game</string>
+    
+    <string name="default_provisional">Number of Provisional Games</string>
+    <string name="default_provisional_summary">Games a player must play to exit provisional</string>
     
     <string name="default_rating">Default Rating</string>
     <string name="default_rating_summary">The default rating given to a player profile</string>

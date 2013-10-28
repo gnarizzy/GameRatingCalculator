@@ -36,7 +36,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ProfileViewerFragment extends Fragment implements OnItemClickListener
 {
@@ -147,6 +146,7 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
                     
                     final EditText rating = (EditText) playerEditView.findViewById(R.id.profile_rating);
                     rating.setText("" + temp.getRating());
+                    rating.setHint("Rating (Default is " + GameRatingCalculatorActivity.DEFAULT_RATING() + ")");
                     
                     final Spinner colorSpinner = (Spinner) playerEditView.findViewById(R.id.profile_color);
                     colorSpinner.setAdapter(colorAdapter);
@@ -167,9 +167,13 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
                     colorSpinner.setSelection(colorList.indexOf(colorName));
                     
                     final CheckBox provisional = (CheckBox) playerEditView.findViewById(R.id.profile_provisional);
+                    final EditText numProvGames = (EditText) playerEditView.findViewById(R.id.num_prov_games);
+                    numProvGames.setHint("Provisional Games (Default is " + GameRatingCalculatorActivity.DEFAULT_PROVISIONAL() + ")");
                     if(temp.isProvisional())
                     {
                         provisional.setChecked(true);
+                        numProvGames.setVisibility(View.VISIBLE);
+                        numProvGames.setText("" + temp.getProvisionalGamesLeft());
                     }
                     final LinearLayout myCheckBox = (LinearLayout) playerEditView.findViewById(R.id.my_check_box);
                     myCheckBox.setOnClickListener(new OnClickListener()
@@ -179,11 +183,20 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
                         public void onClick(View view)
                         {
                             provisional.toggle();
+                            if(provisional.isChecked())
+                            {
+                                numProvGames.setVisibility(View.VISIBLE);
+                            }
+                            else
+                            {
+                                numProvGames.setVisibility(View.GONE);
+                            }
                         }
                         
                     });
                     
-                    EditListener listener = new EditListener(temp, name, rating, colorSpinner, provisional, adapter);
+                    EditListener listener = new EditListener(temp, name, rating, colorSpinner, provisional,
+                            numProvGames, adapter);
                     
                     builder.setView(playerEditView)
                            .setPositiveButton("Edit", listener)
@@ -201,25 +214,27 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
     private class EditListener implements DialogInterface.OnClickListener
     {
         Profile prof;
-        EditText name, rating;
+        EditText name, rating, numProvGames;
         Spinner colorSpinner;
         CheckBox provisional;
         ArrayAdapter<Profile> adapter;
         
         public EditListener(Profile prof, EditText name, EditText rating, Spinner colorSpinner,
-                CheckBox provisional, ArrayAdapter<Profile> adapter)
+                CheckBox provisional, EditText numProvGames, ArrayAdapter<Profile> adapter)
         {
             this.prof = prof;
             this.name = name;
             this.rating = rating;
             this.colorSpinner = colorSpinner;
             this.provisional = provisional;
+            this.numProvGames = numProvGames;
             this.adapter = adapter;
         }
         
         @Override
         public void onClick(DialogInterface arg0, int arg1)
         {
+            //try-catch statements protect from empty strings
             prof.setName(name.getText().toString());
             try
             {
@@ -227,10 +242,26 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
             }
             catch(Exception e)
             {
-                Toast.makeText(getActivity(), "Rating is not valid because it is too high.", Toast.LENGTH_SHORT).show();
+                prof.setRating(GameRatingCalculatorActivity.DEFAULT_RATING());
             }
             prof.setFavColor(Tags.getColorMap().get(colorSpinner.getSelectedItem()));
             prof.setProvisional(provisional.isChecked());
+            try
+            {
+                int temp = Integer.valueOf(numProvGames.getText().toString());
+                if(temp < 1)
+                {
+                    throw new Exception();
+                }
+                else
+                {
+                    prof.setProvisionalGamesLeft(provisional.isChecked() ? temp : 0);
+                }
+            }
+            catch (Exception e)
+            {
+                prof.setProvisionalGamesLeft(provisional.isChecked() ? GameRatingCalculatorActivity.DEFAULT_PROVISIONAL() : 0);
+            }
             adapter.notifyDataSetChanged();
         }
         

@@ -50,12 +50,15 @@
 	    android:layout_below="@id/profile_color"
 	    android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
+        android:clickable="true"
         android:orientation="horizontal">
         
 	    <CheckBox 
 	        android:id="@+id/profile_provisional"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"/>
+	        android:layout_height="wrap_content"
+	        android:focusable="false"
+	        android:clickable="false"/>
 	    
 	    <TextView
 	        android:id="@+id/provisional_text"
@@ -64,6 +67,19 @@
 	        android:textSize="16sp"
 	        android:text="@string/provisional_text"/>
     </LinearLayout>
+    
+    <EditText
+        android:id="@+id/num_prov_games"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/my_check_box"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:inputType="number"
+        android:maxLength="2"
+        android:hint="@string/num_prov_games"
+        android:visibility="gone"/>
     
 
 </RelativeLayout>
