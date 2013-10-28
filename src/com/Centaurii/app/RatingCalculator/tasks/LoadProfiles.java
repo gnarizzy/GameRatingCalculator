@@ -94,9 +94,6 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
         File ratingsFile = new File(Tags.RATINGS_FOLDER, Tags.RATINGS_FILE);
         File newRatingsFile = new File(activity.getExternalFilesDir(null), Tags.RATINGS_FILE);
         
-        Log.i("LoadProfiles", "Folder: " + ratingsFolder.getAbsolutePath());
-        Log.i("LoadProfiles", "File: " + ratingsFile.getAbsolutePath());
-        
         String rawProfile = "";
         
         //Check to see if the ratings folder already exists
@@ -130,7 +127,14 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
                 else
                 {
                     Log.i("LoadProfiles", "Deleting old ratings folder");
-                    ratingsFolder.delete();
+                    if(ratingsFolder.delete())
+                    {
+                        Log.i("LoadProfiles", "Success!");
+                    }
+                    else
+                    {
+                        Log.i("LoadProfiles", "Failure!");   
+                    }
                 }
             }
             catch (IOException e)
@@ -164,9 +168,9 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
             BufferedReader reader = null;
             try
             {
-                if(ratingsFile.exists())
+                if(newRatingsFile.exists())
                 {
-                    Log.i("LoadProfiles", "Reading ratings info");
+                    Log.i("LoadProfiles", "Reading ratings info from profiles in new folder");
                     reader = new BufferedReader(new FileReader(newRatingsFile));
                     
                     StringBuilder builder = new StringBuilder();
