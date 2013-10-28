@@ -92,6 +92,7 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
     {
         File ratingsFolder = new File(Tags.RATINGS_FOLDER);
         File ratingsFile = new File(Tags.RATINGS_FOLDER, Tags.RATINGS_FILE);
+        File newRatingsFile = new File(activity.getExternalFilesDir(null), Tags.RATINGS_FILE);
         
         Log.i("LoadProfiles", "Folder: " + ratingsFolder.getAbsolutePath());
         Log.i("LoadProfiles", "File: " + ratingsFile.getAbsolutePath());
@@ -120,12 +121,16 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
                         }
                     }
                     
+                    Log.i("LoadProfiles", "Deleting old ratings folder and file");
+                    ratingsFile.delete();
+                    ratingsFolder.delete();
+                    
                     rawProfile = builder.toString();
                 }
                 else
                 {
-                    Log.i("LoadProfiles", "Creating ratings file");
-                    ratingsFile.createNewFile();
+                    Log.i("LoadProfiles", "Deleting old ratings folder");
+                    ratingsFolder.delete();
                 }
             }
             catch (IOException e)
@@ -154,12 +159,65 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
             }
         }
         //If it doesn't exist, create it and set isFirstTime
+        else if(newRatingsFile.exists())
+        {
+            BufferedReader reader = null;
+            try
+            {
+                if(ratingsFile.exists())
+                {
+                    Log.i("LoadProfiles", "Reading ratings info");
+                    reader = new BufferedReader(new FileReader(newRatingsFile));
+                    
+                    StringBuilder builder = new StringBuilder();
+                    String line;
+                    while((line = reader.readLine()) != null)
+                    {
+                        builder.append(line + "\n");
+                        if(isCancelled())
+                        {
+                            break;
+                        }
+                    }
+                    
+                    rawProfile = builder.toString();
+                }
+                else
+                {
+                    Log.i("LoadProfiles", "Deleting old ratings folder");
+                    ratingsFolder.delete();
+                }
+            }
+            catch (IOException e)
+            {
+                Log.i("LoadProfiles", "I/O: File could not be created or something else");
+                e.printStackTrace();
+            }
+            catch (Exception e)
+            {
+                Log.i("LoadProfiles", "Unknown error, check stack trace");
+                e.printStackTrace();
+            }
+            finally
+            {
+                try
+                {
+                    if(reader != null)
+                    {
+                        reader.close();
+                    }
+                } 
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
         else
         {
             try
             {
-                ratingsFolder.mkdir();
-                ratingsFile.createNewFile();
+                newRatingsFile.createNewFile();
             } 
             catch (IOException e)
             {
@@ -171,3 +229,5 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
         return rawProfile;
     }
 }
+
+
