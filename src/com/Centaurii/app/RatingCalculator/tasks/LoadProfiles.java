@@ -12,6 +12,7 @@ import com.Centaurii.app.RatingCalculator.R;
 import com.Centaurii.app.RatingCalculator.implementations.ProfileHandler;
 import com.Centaurii.app.RatingCalculator.interfaces.ProfileRetrieveAndSave;
 import com.Centaurii.app.RatingCalculator.model.Profile;
+import com.Centaurii.app.RatingCalculator.util.AppRater;
 import com.Centaurii.app.RatingCalculator.util.Tags;
 
 import android.app.Dialog;
@@ -86,6 +87,7 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
         {
             splashScreen.dismiss();
         }
+        AppRater.app_launched(activity);
     }
     
     private String getFile()
@@ -96,7 +98,7 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
         
         String rawProfile = "";
         
-        //Check to see if the ratings folder already exists
+        //Check to see if the old ratings folder already exists, get its info, then delete it
         if(ratingsFolder.exists())
         {
             BufferedReader reader = null;
