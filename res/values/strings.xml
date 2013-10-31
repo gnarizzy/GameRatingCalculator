@@ -37,5 +37,8 @@
     <string name="default_rating">Default Rating</string>
     <string name="default_rating_summary">The default rating given to a player profile</string>
     
+    <string name="splash_screen">Use Cat Splash Screen</string>
+    <string name="splash_screen_summary">This one feels pretty self explanatory</string>
+    
 
 </resources>

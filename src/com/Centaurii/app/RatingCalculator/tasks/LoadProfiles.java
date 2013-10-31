@@ -18,6 +18,9 @@ import com.Centaurii.app.RatingCalculator.util.Tags;
 import android.app.Dialog;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
 
 public class LoadProfiles extends AsyncTask<Void, Void, Void>
 {
@@ -32,9 +35,25 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
     @Override
     protected void onPreExecute()
     {
+        LayoutInflater inflater = activity.getLayoutInflater();
+        
+        View view = inflater.inflate(R.layout.splash_screen, null, false);
+        
+        ImageView splash = (ImageView) view.findViewById(R.id.image);
+        
+        //If this is true, use the cat, else use the default one
+        if((GameRatingCalculatorActivity.SPLASH_SCREEN()))
+        {
+            splash.setImageResource(R.drawable.splash_image);
+        }
+        else
+        {
+            splash.setImageResource(R.drawable.calc_splash);
+        }
+        
         splashScreen = new Dialog(activity, R.style.appTheme);
         splashScreen.setCancelable(false);
-        splashScreen.setContentView(R.layout.splash_screen);
+        splashScreen.setContentView(view);
         splashScreen.show();
     }
     

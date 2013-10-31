@@ -10,10 +10,13 @@ public class Tags
     /** Storage Location*/
     public static final String RATINGS_FOLDER = Environment.getExternalStorageDirectory() + "/RatingsFolder/";
     public static final String RATINGS_FILE = "profiles";
+    
+    /** Shared Preferences Refrences */
     public static final String MAX_PROFILES = "max_prof";
     public static final String MAX_PLAYERS = "max_play";
     public static final String DEFAULT_PROVISIONAL = "def_prov";
     public static final String DEFAULT_RATING = "def_rate";
+    public static final String SPLASH = "splash";
     
     /** Fragment Strings*/
     public static final String PROFILE_FRAGMENT = "profile";
