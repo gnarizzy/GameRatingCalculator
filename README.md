@@ -1,7 +1,7 @@
 GameRatingCalculator
 ====================
 
-Android app for calculating rating changes in 2-6 person games. Uses a modified version of Elo rating algorithm to produce accurate rankings for multiplayer games.
+Android app for calculating rating changes in 2-6 person games. Uses a modified version of Elo rating algorithm to produce accurate rankings for multiplayer games. For two player games, the algorithm is identical to a standard elo algorithm.
 
 Version 2.0+ features a brand new profile system that automatically produces and updates a rating ladder of all players. Version 2.1 will allow users to track provisional games.   
 
