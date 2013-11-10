@@ -30,7 +30,8 @@ public class GameRatingCalculatorActivity extends FragmentActivity
     private ArrayList<Profile> savedProfiles;
     
     /* Saved Preference Variables*/
-    public static int MAX_PROFILES, MAX_PLAYERS, DEFAULT_RATING;
+    public static int MAX_PROFILES, MAX_PLAYERS, DEFAULT_PROVISIONAL, DEFAULT_RATING;
+    public static boolean SPLASH_SCREEN;
     
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,7 +45,9 @@ public class GameRatingCalculatorActivity extends FragmentActivity
         
         MAX_PROFILES = Integer.valueOf(sharedPrefs.getString(Tags.MAX_PROFILES, "20"));
         MAX_PLAYERS = Integer.valueOf(sharedPrefs.getString(Tags.MAX_PLAYERS, "6"));
+        DEFAULT_PROVISIONAL = Integer.valueOf(sharedPrefs.getString(Tags.DEFAULT_PROVISIONAL, "5"));
         DEFAULT_RATING = Integer.valueOf(sharedPrefs.getString(Tags.DEFAULT_RATING, "1000"));
+        SPLASH_SCREEN = sharedPrefs.getBoolean(Tags.SPLASH, false);
         
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         
@@ -81,7 +84,9 @@ public class GameRatingCalculatorActivity extends FragmentActivity
         
         MAX_PROFILES = Integer.valueOf(sharedPrefs.getString(Tags.MAX_PROFILES, "20"));
         MAX_PLAYERS = Integer.valueOf(sharedPrefs.getString(Tags.MAX_PLAYERS, "6"));
+        DEFAULT_PROVISIONAL = Integer.valueOf(sharedPrefs.getString(Tags.DEFAULT_PROVISIONAL, "5"));
         DEFAULT_RATING = Integer.valueOf(sharedPrefs.getString(Tags.DEFAULT_RATING, "1000"));
+        SPLASH_SCREEN = sharedPrefs.getBoolean(Tags.SPLASH, false);
     }
     
     public boolean checkExternalStorage()
@@ -120,8 +125,18 @@ public class GameRatingCalculatorActivity extends FragmentActivity
         return MAX_PLAYERS;
     }
     
+    public static int DEFAULT_PROVISIONAL()
+    {
+        return DEFAULT_PROVISIONAL;
+    }
+    
     public static int DEFAULT_RATING()
     {
         return DEFAULT_RATING;
+    }
+    
+    public static boolean SPLASH_SCREEN()
+    {
+        return SPLASH_SCREEN;
     }
 }

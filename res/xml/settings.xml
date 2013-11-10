@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
     
-    <EditTextPreference 
+    <com.Centaurii.app.RatingCalculator.custom.CustomEditPreference  
         android:title="@string/max_profiles"
         android:summary="@string/max_profiles_summary"
         android:gravity="center"
@@ -10,7 +10,7 @@
         android:inputType="number"
         android:key="max_prof" />
     
-    <EditTextPreference 
+    <com.Centaurii.app.RatingCalculator.custom.CustomEditPreference 
         android:title="@string/max_players"
         android:summary="@string/max_players_summary"
         android:gravity="center"
@@ -19,7 +19,16 @@
         android:inputType="number"
         android:key="max_play" />
     
-    <EditTextPreference 
+    <com.Centaurii.app.RatingCalculator.custom.CustomEditPreference 
+        android:title="@string/default_provisional"
+        android:summary="@string/default_provisional_summary"
+        android:gravity="center"
+        android:defaultValue="5"
+        android:maxLength="2"
+        android:inputType="number"
+        android:key="def_prov" />
+    
+    <com.Centaurii.app.RatingCalculator.custom.CustomEditPreference 
         android:title="@string/default_rating"
         android:summary="@string/default_rating_summary"
         android:gravity="center"
@@ -27,5 +36,11 @@
         android:maxLength="8"
         android:inputType="number"
         android:key="def_rate" />
+    
+    <CheckBoxPreference
+        android:title="@string/splash_screen"
+        android:summary="@string/splash_screen_summary"
+        android:defaultValue="false"
+        android:key="splash" />
 
 </PreferenceScreen>

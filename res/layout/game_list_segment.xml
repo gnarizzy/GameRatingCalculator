@@ -49,14 +49,29 @@
 	        android:layout_marginLeft="10dp"
 	        android:textSize="16sp"/>
 	    
-	    <TextView
-	        android:id="@+id/provisional"
+	    <LinearLayout 
+	        android:id="@+id/wrapper"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignParentRight="true"
-	        android:layout_centerVertical="true"
-	        android:layout_marginRight="5dp"
-	        android:text="@string/provisional"/>
+		    android:layout_marginRight="5dp"
+		    android:layout_alignParentRight="true"
+		    android:layout_centerVertical="true"
+	        android:orientation="vertical">
+	    
+		    <TextView
+		        android:id="@+id/provisional"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:gravity="center_horizontal|right"
+		        android:text="@string/provisional"/>
+		    
+		    <TextView 
+		        android:id="@+id/provisional_left"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:gravity="center_horizontal|right"/>
+	    
+	    </LinearLayout>
 	
 	</RelativeLayout>
 </com.Centaurii.app.RatingCalculator.custom.CheckableLinearLayout>

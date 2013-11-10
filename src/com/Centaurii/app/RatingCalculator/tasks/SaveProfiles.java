@@ -25,7 +25,7 @@ public class SaveProfiles extends AsyncTask<Void, Void, Void>
     @Override
     protected Void doInBackground(Void... arg0)
     {
-        File ratingsFile = new File(Tags.RATINGS_FOLDER, Tags.RATINGS_FILE);
+        File ratingsFile = new File(activity.getExternalFilesDir(null), Tags.RATINGS_FILE);
         ProfileRetrieveAndSave prof = new ProfileHandler();
         
         String saveData = prof.saveProfiles(activity.getSavedProfiles());

@@ -6,7 +6,7 @@ import com.Centaurii.app.RatingCalculator.model.Profile;
  * Model class that stores information of players and calculates new ratings
  * Created 1/15/12
  * 
- * @author Gautam Narula
+ * @author Gautam Narula, Andrew Schuster
  * 
  */
 public class Calculator
@@ -28,6 +28,14 @@ public class Calculator
                 if(commit)
                 {
                     player.setRating(endScores[tracker]);
+                    if(player.isProvisional())
+                    {
+                        player.setProvisionalGamesLeft(player.getProvisionalGamesLeft() - 1);
+                        if(player.getProvisionalGamesLeft() < 1)
+                        {
+                            player.setProvisional(false);
+                        }
+                    }
                 }
             }
             //winning case
@@ -38,6 +46,14 @@ public class Calculator
                 if(commit)
                 {
                     player.setRating(endScores[tracker]);
+                    if(player.isProvisional())
+                    {
+                        player.setProvisionalGamesLeft(player.getProvisionalGamesLeft() - 1);
+                        if(player.getProvisionalGamesLeft() < 1)
+                        {
+                            player.setProvisional(false);
+                        }
+                    }
                 }
             }
             tracker++;

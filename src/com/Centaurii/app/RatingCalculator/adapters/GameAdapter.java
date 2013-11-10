@@ -51,6 +51,7 @@ public class GameAdapter extends ArrayAdapter<Profile>
             holder.profileName = (TextView) v.findViewById(R.id.name);
             holder.profileRating = (TextView) v.findViewById(R.id.rating);
             holder.profileProvisional = (TextView) v.findViewById(R.id.provisional);
+            holder.profileProvisionalLeft = (TextView) v.findViewById(R.id.provisional_left);
             
             v.setTag(holder);
         }
@@ -66,10 +67,13 @@ public class GameAdapter extends ArrayAdapter<Profile>
         if(prof.isProvisional())
         {
             holder.profileProvisional.setVisibility(View.VISIBLE);
+            holder.profileProvisionalLeft.setVisibility(View.VISIBLE);
+            holder.profileProvisionalLeft.setText("" + prof.getProvisionalGamesLeft());
         }
         else
         {
             holder.profileProvisional.setVisibility(View.GONE);
+            holder.profileProvisionalLeft.setVisibility(View.GONE);
         }
         
         return v;
@@ -86,8 +90,6 @@ public class GameAdapter extends ArrayAdapter<Profile>
         CheckBox winner;
         TextView addNewPlayer;
         ImageView profileImage;
-        TextView profileName;
-        TextView profileRating;
-        TextView profileProvisional;
+        TextView profileName, profileRating, profileProvisional, profileProvisionalLeft;
     }
 }

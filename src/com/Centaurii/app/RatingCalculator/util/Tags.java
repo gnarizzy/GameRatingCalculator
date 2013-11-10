@@ -10,9 +10,13 @@ public class Tags
     /** Storage Location*/
     public static final String RATINGS_FOLDER = Environment.getExternalStorageDirectory() + "/RatingsFolder/";
     public static final String RATINGS_FILE = "profiles";
+    
+    /** Shared Preferences Refrences */
     public static final String MAX_PROFILES = "max_prof";
     public static final String MAX_PLAYERS = "max_play";
+    public static final String DEFAULT_PROVISIONAL = "def_prov";
     public static final String DEFAULT_RATING = "def_rate";
+    public static final String SPLASH = "splash";
     
     /** Fragment Strings*/
     public static final String PROFILE_FRAGMENT = "profile";
@@ -21,6 +25,7 @@ public class Tags
     public static final String NAME = "name";
     public static final String RATING = "rating";
     public static final String PROVISIONAL = "prov";
+    public static final String PROVISIONAL_GAMES = "g";
     public static final String FAV_COLOR = "color";
     
     /** Useful constants.  These may be moved to the main activity for settings purposes*/

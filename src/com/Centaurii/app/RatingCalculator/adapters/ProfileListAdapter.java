@@ -51,6 +51,7 @@ public class ProfileListAdapter extends ArrayAdapter<Profile>
             handler.profileName = (TextView) v.findViewById(R.id.name);
             handler.profileRating = (TextView) v.findViewById(R.id.rating);
             handler.profileProvisional = (TextView) v.findViewById(R.id.provisional);
+            handler.profileProvisionalLeft = (TextView) v.findViewById(R.id.provisional_left);
             
             v.setTag(handler);
         }
@@ -66,10 +67,13 @@ public class ProfileListAdapter extends ArrayAdapter<Profile>
         if(prof.isProvisional())
         {
             handler.profileProvisional.setVisibility(View.VISIBLE);
+            handler.profileProvisionalLeft.setVisibility(View.VISIBLE);
+            handler.profileProvisionalLeft.setText("" + prof.getProvisionalGamesLeft());
         }
         else
         {
             handler.profileProvisional.setVisibility(View.GONE);
+            handler.profileProvisionalLeft.setVisibility(View.GONE);
         }
         
         return v;
@@ -85,8 +89,6 @@ public class ProfileListAdapter extends ArrayAdapter<Profile>
     static class ProfileHandler
     {
         ImageView profileImage;
-        TextView profileName;
-        TextView profileRating;
-        TextView profileProvisional;
+        TextView profileName, profileRating, profileProvisional, profileProvisionalLeft;
     }
 }
