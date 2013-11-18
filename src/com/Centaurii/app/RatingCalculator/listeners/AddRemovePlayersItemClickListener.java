@@ -5,6 +5,7 @@ import com.Centaurii.app.RatingCalculator.R;
 import com.Centaurii.app.RatingCalculator.model.Profile;
 
 import android.app.AlertDialog;
+import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ public class AddRemovePlayersItemClickListener implements OnItemClickListener
 {
     FragmentActivity act;
     ListView nonPlayers;
+    Resources res;
     ArrayAdapter<Profile> nonPlayerAdapter;
     ArrayAdapter<Profile> playerAdapter;
 
@@ -28,6 +30,7 @@ public class AddRemovePlayersItemClickListener implements OnItemClickListener
         this.act = act;
         this.nonPlayerAdapter = nonPlayerAdapter;
         this.playerAdapter = playerAdapter;
+        res = act.getResources();
     }
 
     @Override
@@ -45,11 +48,11 @@ public class AddRemovePlayersItemClickListener implements OnItemClickListener
             // Execute the Add Player
             if(nonPlayerAdapter.getCount() < 1)
             {
-                Toast.makeText(act, "You have no more profiles.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(act, res.getString(R.string.not_enough_profiles), Toast.LENGTH_SHORT).show();
             }
             else if(playerAdapter.getCount() > GameRatingCalculatorActivity.MAX_PLAYERS() - 1)
             {
-                Toast.makeText(act, "The maximum number of players is " + GameRatingCalculatorActivity.MAX_PLAYERS() + ".", Toast.LENGTH_SHORT).show();
+                Toast.makeText(act, res.getString(R.string.max_players_reached) + GameRatingCalculatorActivity.MAX_PLAYERS() + ".", Toast.LENGTH_SHORT).show();
             }
             else
             {
@@ -57,7 +60,7 @@ public class AddRemovePlayersItemClickListener implements OnItemClickListener
                 ListView lv = (ListView) alertView.findViewById(R.id.non_players);
     
                 builder.setView(alertView)
-                       .setPositiveButton("Add", new ListTransferListener(lv.getCheckedItemPositions(),
+                       .setPositiveButton(res.getString(R.string.add_profile), new ListTransferListener(lv.getCheckedItemPositions(),
                                nonPlayerAdapter, playerAdapter)) //This listener transfers from nonplayers to players
                        .create()
                        .show();
@@ -72,8 +75,8 @@ public class AddRemovePlayersItemClickListener implements OnItemClickListener
                     playerAdapter, nonPlayerAdapter);
 
             builder.setView(alertView)
-                   .setPositiveButton("Winner", listener) //This listener makes the current choice a winner
-                   .setNegativeButton("Remove", listener) //This listener removes the current choice
+                   .setPositiveButton(res.getString(R.string.winner), listener) //This listener makes the current choice a winner
+                   .setNegativeButton(res.getString(R.string.remove), listener) //This listener removes the current choice
                    .create()
                    .show();
         }

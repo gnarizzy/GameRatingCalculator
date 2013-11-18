@@ -1,6 +1,9 @@
 package com.Centaurii.app.RatingCalculator;
 
+import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.LayoutInflater;
@@ -8,15 +11,23 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+@SuppressLint("NewApi")
 public class SettingsActivity extends PreferenceActivity
 {
 
+    @SuppressLint("NewApi")
     @SuppressWarnings("deprecation")
     @Override
     protected void onPostCreate(Bundle savedInstanceState)
     {
         super.onPostCreate(savedInstanceState);
-
+        
+        //Check if the version is Honeycomb or higher
+        if(!Build.VERSION.RELEASE.startsWith("2"))
+        {
+            Drawable background = getResources().getDrawable(R.drawable.list_background);
+            getActionBar().setBackgroundDrawable(background);
+        }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         
         LayoutInflater inflater = getLayoutInflater();

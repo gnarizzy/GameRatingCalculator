@@ -51,7 +51,8 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
             splash.setImageResource(R.drawable.calc_splash);
         }
         
-        splashScreen = new Dialog(activity, R.style.appTheme);
+        splashScreen = new Dialog(activity, R.style.splashTheme);
+        splashScreen.setCanceledOnTouchOutside(false);
         splashScreen.setCancelable(false);
         splashScreen.setContentView(view);
         splashScreen.show();

@@ -19,6 +19,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -39,6 +40,7 @@ import android.widget.TextView;
 
 public class ProfileViewerFragment extends Fragment implements OnItemClickListener
 {
+    Resources res;
     ListView profilesList;
     ProfileListAdapter adapter;
     
@@ -47,12 +49,14 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
             Bundle savedInstanceState) 
     {
         View view = inflater.inflate(R.layout.fragment_profiles, container, false);
-
+        
+        res = getActivity().getResources();
+        
         Button goBack = (Button) view.findViewById(R.id.back_button);
         goBack.setOnClickListener(new GoBackClickListener(getActivity()));
         
         TextView header = (TextView)view.findViewById(R.id.profile_header);
-        header.setText("Profiles");
+        header.setText(res.getString(R.string.profiles));
         
         Button addProfile = (Button)view.findViewById(R.id.add_profile);
         addProfile.setOnClickListener(
@@ -88,13 +92,13 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
         
         View playerOptions = inflater.inflate(R.layout.player_options, null, false);
         
-        ((TextView) playerOptions.findViewById(R.id.player_options)).setText("What would you like to do?");
+        ((TextView) playerOptions.findViewById(R.id.player_options)).setText(res.getString(R.string.pressed_player_dialog));
         
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(playerOptions)
-               .setPositiveButton("Delete", listener)
-               .setNeutralButton("Edit Profile", listener)
-               .setNegativeButton("Nothing", listener)
+               .setPositiveButton(res.getString(R.string.delete), listener)
+               .setNeutralButton(res.getString(R.string.edit_profile), listener)
+               .setNegativeButton(res.getString(R.string.cancel), listener)
                .create()
                .show();
     }
@@ -139,14 +143,14 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
                     View playerEditView = inflater.inflate(R.layout.fragment_add_profile, null, false);
                     
                     final TextView header = (TextView) playerEditView.findViewById(R.id.add_profile_header);
-                    header.setText("Edit Profile");
+                    header.setText(res.getString(R.string.edit_profile));
                     
                     final EditText name = (EditText) playerEditView.findViewById(R.id.profile_name);
                     name.setText(temp.getName());
                     
                     final EditText rating = (EditText) playerEditView.findViewById(R.id.profile_rating);
                     rating.setText("" + temp.getRating());
-                    rating.setHint("Rating (Default is " + GameRatingCalculatorActivity.DEFAULT_RATING() + ")");
+                    rating.setHint(res.getString(R.string.rating) + " (Default is " + GameRatingCalculatorActivity.DEFAULT_RATING() + ")");
                     
                     final Spinner colorSpinner = (Spinner) playerEditView.findViewById(R.id.profile_color);
                     colorSpinner.setAdapter(colorAdapter);
@@ -168,7 +172,7 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
                     
                     final CheckBox provisional = (CheckBox) playerEditView.findViewById(R.id.profile_provisional);
                     final EditText numProvGames = (EditText) playerEditView.findViewById(R.id.num_prov_games);
-                    numProvGames.setHint("Provisional Games (Default is " + GameRatingCalculatorActivity.DEFAULT_PROVISIONAL() + ")");
+                    numProvGames.setHint(res.getString(R.string.prov_games_option) + " (Default is " + GameRatingCalculatorActivity.DEFAULT_PROVISIONAL() + ")");
                     if(temp.isProvisional())
                     {
                         provisional.setChecked(true);
@@ -199,8 +203,8 @@ public class ProfileViewerFragment extends Fragment implements OnItemClickListen
                             numProvGames, adapter);
                     
                     builder.setView(playerEditView)
-                           .setPositiveButton("Edit", listener)
-                           .setNegativeButton("Cancel", null)
+                           .setPositiveButton(res.getString(R.string.edit), listener)
+                           .setNegativeButton(res.getString(R.string.cancel), null)
                            .create()
                            .show();
                     break;
