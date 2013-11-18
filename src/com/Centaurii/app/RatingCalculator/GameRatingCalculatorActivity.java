@@ -9,6 +9,7 @@ import com.Centaurii.app.RatingCalculator.tasks.SaveProfiles;
 import com.Centaurii.app.RatingCalculator.util.Tags;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
@@ -17,14 +18,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Controller class that sets up listeners/event handlers and interacts with Calculator.java based on user input
@@ -56,6 +52,7 @@ public class GameRatingCalculatorActivity extends FragmentActivity
                 .getDefaultSharedPreferences(this);
         
         //Check if the version is Honeycomb or higher
+        Log.i("GRCA", Build.VERSION.RELEASE.toString());
         if(!Build.VERSION.RELEASE.startsWith("2"))
         {
             Drawable background = getResources().getDrawable(R.drawable.list_background);
@@ -89,28 +86,25 @@ public class GameRatingCalculatorActivity extends FragmentActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
+        //Log.i("GRCA", "Menu is being created");
         getMenuInflater().inflate(R.menu.container, menu);
-        LayoutInflater inflater = getLayoutInflater();
-        for(int i = 0; i < menu.size(); i++)
-        {
-            View view = inflater.inflate(R.layout.menu_items, null, false);
-            
-            ((TextView) view.findViewById(R.id.menu_items_title)).setText(menu.getItem(i).getTitle());
-            MenuItemCompat.setActionView(menu.getItem(i), view);
-        }
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
+        Log.i("GRCA", "onOptionsItemSelected is running");
         switch(item.getItemId())
         {
             case R.id.action_settings:
-                Toast.makeText(this, "You pressed help!", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+                dialog.setMessage(R.string.help_dialog);
+                dialog.setNeutralButton(R.string.ok, null);
+                dialog.show();
                 return true;
             default:
-                return true;
+                return super.onOptionsItemSelected(item);
         }
     }
     

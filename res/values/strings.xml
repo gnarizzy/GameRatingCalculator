@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Game Rating Calculator</string>
     <string name="ratings_calculator">Calculator</string>
     <string name="appName">Rating Calculator</string>
@@ -33,6 +32,7 @@
     <string name="num_prov_games">Provisional Games Left</string>
     <string name="action_settings">Help</string>
     <string name="remove">Remove</string>
+    <string name="ok">OK</string>
     <string name="help_dialog">Welcome to Game Rating Calculator!  To use the application, first go to the profiles page and use the add button to create user profiles for you and your friends.  Next, go to the calculator page and add the people you want to include in your game.  Choose a winner and then press calculate to receive the results.</string>
     
     <string name="value_error">Value of zero not accepted, using default provisional game total instead.</string>

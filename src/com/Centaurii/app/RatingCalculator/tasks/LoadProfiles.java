@@ -88,6 +88,7 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
         {
             e.printStackTrace();
         }
+        Log.i("LoadProf", "It got to the end of the asynctask");
         return null;
     }
     
@@ -108,6 +109,7 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
             splashScreen.dismiss();
         }
         AppRater.app_launched(activity);
+        Log.i("LoadProf", "Finished onPostExecute()");
     }
     
     private String getFile()

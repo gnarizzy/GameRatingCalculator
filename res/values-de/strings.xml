@@ -32,6 +32,7 @@
     <string name="num_prov_games">Vorläufige Spiele links</string>
     <string name="action_settings">Hilfe</string>
     <string name="remove">entfernen</string>
+    <string name="ok">OK</string>
     <string name="help_dialog">Willkommen auf Game Rating Calculator! Um die Anwendung zu benutzen, um die Profile Seite gehen und auf die Schaltfläche Hinzufügen, um Benutzerprofile für Sie und Ihre Freunde zu erstellen. Weiter, um den Rechner-Seite und fügen die Menschen, die Sie in Ihrem Spiel gehören. Wählen Sie einen Gewinner und drücken Sie dann berechnen, um die Ergebnisse zu erhalten.</string>
     
     <string name="value_error">Wert von Null nicht akzeptiert, unter Verwendung der Standardeinstellungen vorläufigen Spiel insgesamt statt.</string>
