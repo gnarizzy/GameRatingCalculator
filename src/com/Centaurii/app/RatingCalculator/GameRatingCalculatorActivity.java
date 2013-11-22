@@ -87,8 +87,12 @@ public class GameRatingCalculatorActivity extends FragmentActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         //Log.i("GRCA", "Menu is being created");
-        getMenuInflater().inflate(R.menu.container, menu);
-        return super.onCreateOptionsMenu(menu);
+        if(!Build.VERSION.RELEASE.startsWith("2"))
+        {
+            getMenuInflater().inflate(R.menu.container, menu);
+            return true;
+        }
+        return false;
     }
     
     @Override

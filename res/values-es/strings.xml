@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Game Rating Calculator</string>
+    <string name="ratings_calculator">Calculadora</string>
+    <string name="appName">Rating Calculator</string>
+    <string name="profiles">Perfil</string>
+    <string name="settings">Configuración</string>
+    <string name="image_description">Splash Screen</string>
+    <string name="add_profile">Agrega</string>
+    <string name="cancel">Cancela</string>
+    <string name="delete">Elimina</string>
+    <string name="edit_profile">Edita perfil</string>
+    <string name="rating">Clasificación</string>
+    <string name="edit">Edita</string>
+    <string name="winner">Ganador</string>
+    <string name="new_profile">Agrega un perfil</string>
+    <string name="profile_name">Nombre</string>
+    <string name="profile_rating">Clasificación (Default 1000)</string>
+    <string name="profile_color">Color (as an integer)</string>
+    <string name="provisional_text">¿Provisional?</string>
+    <string name="profile_image">Perfil Imagen</string>
+    <string name="provisional">Prov</string>
+    <string name="color">Color</string>
+    <string name="save">Ahorra</string>
+    <string name="dont_save">No Ahorra</string>
+    <string name="submit">Calcula</string>
+    <string name="go_back">Regresas</string>
+    <string name="add_new_player">Agrega Jugador Nuevo</string>
+    <string name="results">Resultados</string>
+    <string name="player_options">¿Quiere eliminar esta perfil o hacer ganador?</string>
+    <string name="prov_games_option">Juegos Provisionales</string>
+    <string name="num_prov_games">Juegos Provisionales Restantes</string>
+    <string name="action_settings">Ayuda</string>
+    <string name="remove">Quita</string>
+    <string name="ok">OK</string>
+    <string name="help_dialog">Bienvenido al Juego Rating Calculator! Para utilizar la aplicación, primero vaya a la página de perfiles y utilizar el botón Agrega para crear perfiles de usuario para usted y sus amigos. A continuación, vaya a la página de la calculadora y añadir las personas que desea incluir en su juego. Elija un ganador y pulse Calcula para recibir los resultados.</string>
+    
+    <string name="value_error">Valor de cero no aceptó, utilizando por defecto total del juego en lugar provisional.</string>
+    <string name="pressed_player_dialog">¿Qué quiere hacer?</string>
+    <string name="select_a_winner">Por Favor Elige un Ganador</string>
+    <string name="not_enough_players">No tiene bastante jugadores</string>
+    <string name="not_enough_profiles">No tiene más perfiles</string>
+    <string name="max_players_reached">El número máximo de jugadores es </string>
+    
+    <string name="max_profiles">Perfils máximos</string>
+    <string name="max_profiles_summary">El número máximo de perfiles</string>
+    
+    <string name="max_players">Jugadores máximos</string>
+    <string name="max_players_summary">El número máximo de jugadores en un juego</string>
+    
+    <string name="default_provisional">Juegos Provisionales máximos</string>
+    <string name="default_provisional_summary">Juegos hasta un jugador dejar provisional</string>
+    
+    <string name="default_rating">Clasificación Defecto</string>
+    <string name="default_rating_summary">Clasificación Defecto para un perfil</string>
+    
+    <string name="splash_screen">Utiliza Cat Splash Screen</string>
+    <string name="splash_screen_summary">Ninguna explicación necesaria</string>
+</resources>
