@@ -20,10 +20,16 @@
     </style>
     
     <style parent="android:Theme.Holo.Light" name="appTheme">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textColorHint">#696969</item>
         <item name="android:windowBackground">@drawable/red_space_theme</item>
-        <item name="android:windowNoTitle">true</item>
         <item name="android:buttonStyle">@style/buttonTheme</item>
         <item name="android:alertDialogStyle">@style/dialogTheme</item>
         <item name="android:listChoiceIndicatorMultiple">@drawable/check_box</item>
+        <item name="android:panelFullBackground">@null</item>
+    </style>
+    
+    <style parent="appTheme" name="splashTheme">
+        <item name="android:windowNoTitle">true</item>
     </style>
 </resources>

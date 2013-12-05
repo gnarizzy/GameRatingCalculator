@@ -51,7 +51,8 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
             splash.setImageResource(R.drawable.calc_splash);
         }
         
-        splashScreen = new Dialog(activity, R.style.appTheme);
+        splashScreen = new Dialog(activity, R.style.splashTheme);
+        splashScreen.setCanceledOnTouchOutside(false);
         splashScreen.setCancelable(false);
         splashScreen.setContentView(view);
         splashScreen.show();
@@ -87,6 +88,7 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
         {
             e.printStackTrace();
         }
+        Log.i("LoadProf", "It got to the end of the asynctask");
         return null;
     }
     
@@ -107,6 +109,7 @@ public class LoadProfiles extends AsyncTask<Void, Void, Void>
             splashScreen.dismiss();
         }
         AppRater.app_launched(activity);
+        Log.i("LoadProf", "Finished onPostExecute()");
     }
     
     private String getFile()

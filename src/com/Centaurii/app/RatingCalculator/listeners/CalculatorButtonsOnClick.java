@@ -6,6 +6,7 @@ import com.Centaurii.app.RatingCalculator.util.Calculator;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -23,12 +24,14 @@ public class CalculatorButtonsOnClick implements OnClickListener
     FragmentActivity act;
     ListView players;
     ArrayAdapter<Profile> playersAdapter;
+    Resources res;
     
     public CalculatorButtonsOnClick(FragmentActivity act, ListView players, ArrayAdapter<Profile> playersAdapter)
     {
         this.act = act;
         this.players = players;
         this.playersAdapter = playersAdapter;
+        res = act.getResources();
     }
 
     @Override
@@ -38,11 +41,11 @@ public class CalculatorButtonsOnClick implements OnClickListener
         int totalPlayers = players.getCount() - 1;
         if(winnerPosition == AbsListView.INVALID_POSITION)
         {
-            Toast.makeText(act, "Please select a winner", Toast.LENGTH_SHORT).show();
+            Toast.makeText(act, res.getString(R.string.select_a_winner), Toast.LENGTH_SHORT).show();
         }
         else if(totalPlayers < 2)
         {
-            Toast.makeText(act, "You don't have enough players", Toast.LENGTH_SHORT).show();
+            Toast.makeText(act, res.getString(R.string.not_enough_players), Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -60,8 +63,8 @@ public class CalculatorButtonsOnClick implements OnClickListener
             AlertDialog.Builder builder = new AlertDialog.Builder(act);
             
             builder.setView(dialogView)
-                   .setPositiveButton("Save", new SaveListener(winnerPosition, calculateArr))
-                   .setNegativeButton("Don't Save", null)
+                   .setPositiveButton(res.getString(R.string.save), new SaveListener(winnerPosition, calculateArr))
+                   .setNegativeButton(res.getString(R.string.dont_save), null)
                    .create()
                    .show();
         }

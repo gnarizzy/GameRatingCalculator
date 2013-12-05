@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Game Rating Calculator</string>
+    <string name="ratings_calculator">Rechner</string>
+    <string name="appName">Rating Calculator</string>
+    <string name="profiles">Profil</string>
+    <string name="settings">Einstellungen</string>
+    <string name="image_description">Splash Screen</string>
+    <string name="add_profile">hinzufügen</string>
+    <string name="cancel">stornieren</string>
+    <string name="delete">löschen</string>
+    <string name="edit_profile">Profil bearbeiten</string>
+    <string name="rating">wertung</string>
+    <string name="edit">bearbeiten</string>
+    <string name="winner">Gewinner</string>
+    <string name="new_profile">Profil hinzufügen</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_rating">Wertung (Default 1000)</string>
+    <string name="profile_color">Farbe (als Integer)</string>
+    <string name="provisional_text">Vorläufige?</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="provisional">P</string>
+    <string name="color">Farbe</string>
+    <string name="save">speichern</string>
+    <string name="dont_save">Nicht speichern</string>
+    <string name="submit">Berechnen</string>
+    <string name="go_back">Zurückgehen</string>
+    <string name="add_new_player">Hinzufügen neuer Spieler</string>
+    <string name="results">Ergebnisse</string>
+    <string name="player_options">Möchten Sie diese Person löschen oder sie der Gewinner?</string>
+    <string name="prov_games_option">Vorläufigen spiele</string>
+    <string name="num_prov_games">Vorläufige Spiele links</string>
+    <string name="action_settings">Hilfe</string>
+    <string name="remove">entfernen</string>
+    <string name="ok">OK</string>
+    <string name="help_dialog">Willkommen auf Game Rating Calculator! Um die Anwendung zu benutzen, um die Profile Seite gehen und auf die Schaltfläche Hinzufügen, um Benutzerprofile für Sie und Ihre Freunde zu erstellen. Weiter, um den Rechner-Seite und fügen die Menschen, die Sie in Ihrem Spiel gehören. Wählen Sie einen Gewinner und drücken Sie dann berechnen, um die Ergebnisse zu erhalten.</string>
+    
+    <string name="value_error">Wert von Null nicht akzeptiert, unter Verwendung der Standardeinstellungen vorläufigen Spiel insgesamt statt.</string>
+    <string name="pressed_player_dialog">Was möchten Sie tun?</string>
+    <string name="select_a_winner">wählen Sie bitte ein Gewinner</string>
+    <string name="not_enough_players">Sie haben nicht genug Profile</string>
+    <string name="not_enough_profiles">Sie haben nicht mehr Profile</string>
+    <string name="max_players_reached">Die maximale Anzahl von Spielern ist </string>
+    
+    <string name="max_profiles">Maximale Anzahl der Profile</string>
+    <string name="max_profiles_summary">Die maximal zulässige Anzahl von Profilen</string>
+    
+    <string name="max_players">Maximale Anzahl der Spieler</string>
+    <string name="max_players_summary">Die maximal zulässige Anzahl von Spielern in einer gameMaximum Anzahl der Spieler</string>
+    
+    <string name="default_provisional">Anzahl der Provisional Spiele</string>
+    <string name="default_provisional_summary">Spiele ein Spieler muss spielen, um zu beenden vorläufigen</string>
+    
+    <string name="default_rating">Standard Bewertung</string>
+    <string name="default_rating_summary">Die standard bewertung, die einem Spielerprofil</string>
+    
+    <string name="splash_screen">Verwenden Cat Splash Screen</string>
+    <string name="splash_screen_summary">Selbsterklärend</string>
+</resources>
